@@ -1,4 +1,4 @@
-package comun.clasesPersonas;
+package gestorMiembros.personas;
 
 import java.util.Date;
 
