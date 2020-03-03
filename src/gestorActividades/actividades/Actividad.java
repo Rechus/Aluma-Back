@@ -1,10 +1,12 @@
 package gestorActividades.actividades;
 
-import java.util.Date;
+import java.time.Instant;
+
 
 public interface Actividad {
 	public String getNombre();
-	public Date getFecha();
+	public Instant getFecha();
 	public int getNumeroPlazas();
+
 
 }
