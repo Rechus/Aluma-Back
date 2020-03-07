@@ -33,6 +33,8 @@ public class ActividadLocal extends ActividadImp {
 				}
 				if (valorUltimaReserva < this.getNumeroPlazas()) {
 					this.getListaReservas().put(valorUltimaReserva + 1, new Reserva(persona, this));
+					// añadimos el numero de reserva al atributo de la reserva del mismo nombre
+					this.getListaReservas().get(valorUltimaReserva + 1).setNumeroReserva(valorUltimaReserva + 1); 
 				}
 				System.out.println("Limite de reservas alcanzado");
 			} else {
@@ -40,11 +42,13 @@ public class ActividadLocal extends ActividadImp {
 				 * empezando por el límite de getnumero de plazas */
 				if (!this.getListaReservas().containsKey(this.getNumeroPlazas() + 1)) {
 					this.getListaReservas().put(this.getNumeroPlazas() + 1, new Reserva(persona, this));
+					this.getListaReservas().get(this.getNumeroPlazas() + 1).setNumeroReserva(this.getNumeroPlazas() + 1); 
 				}else { 
 					/* En caso de que haya una reserva de empleado hecha, solo tenemos que coger la
 					 * clave más alta de nuestro mapa y  sumarle uno a la clave */ 
 				valorUltimaReserva = this.getListaReservas().lastKey();
 				this.getListaReservas().put(valorUltimaReserva + 1, new Reserva(persona, this));
+				this.getListaReservas().get(valorUltimaReserva + 1).setNumeroReserva(valorUltimaReserva + 1);
 				}
 			}
 		}

@@ -11,6 +11,7 @@ public class Reserva {
 	private Instant fecha;
 	private Actividad actividad;
 	private boolean confirmado;
+	private int numeroReserva;
 
 	public Persona getPersona() {
 		return persona;
@@ -38,6 +39,16 @@ public class Reserva {
 
 	public void setConfirmado(boolean confirmado) {
 		this.confirmado = confirmado;
+	}
+	
+	
+
+	public int getNumeroReserva() {
+		return numeroReserva;
+	}
+
+	public void setNumeroReserva(int numeroReserva) {
+		this.numeroReserva = numeroReserva;
 	}
 
 	public Reserva(Persona persona, Actividad actividad) {
