@@ -91,7 +91,7 @@ public abstract class ActividadImp implements Actividad{
 	 * realizado, la reserva pasa a estar confirmada  y se añade la persona a la lista de participantes */
 	
 	public void confirmarReserva(Persona persona) {
-		int clave = 0;
+		int numeroReserva = 0;
 		/* Recorremos la lista de reservas para ver si la persona dada tiene reserva o no */
 		for (Reserva reserva : this.getListaReservas().values()) {
 			if(persona.getDni().equals(reserva.getPersona().getDni())) {
@@ -99,12 +99,10 @@ public abstract class ActividadImp implements Actividad{
 				reserva.setConfirmado(true);
 				/* Necesitamos saber la clave de la reserva para porteriormente usarla para
 				 * asociarla a la lista de participantes con la misma clave */ 
-				for (Entry<Integer, Reserva> entradas : this.getListaReservas().entrySet()) {
-					if(reserva.equals(entradas.getValue()))
-					clave = entradas.getKey();
-				}
+					numeroReserva = reserva.getNumeroReserva();
+				
 				// añadimos a la persona a la lista de participantes
-			this.getListaParticipantes().put(clave, reserva.getPersona());
+			this.getListaParticipantes().put(numeroReserva, reserva.getPersona());
 				
 			}else {
 				System.out.println("La persona introducida no tiene ninguna reserva asociada para esta actividad");
