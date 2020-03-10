@@ -1,6 +1,7 @@
 package gestorMiembros.personas;
 
-import java.util.Date;
+import java.time.Instant;
+
 
 public  class Persona {
 	
@@ -8,7 +9,7 @@ public  class Persona {
 	private String nombre;
 	private String primerApello;
 	private String segundoApellido;
-	private Date fechaNacimiento;
+	private Instant fechaNacimiento;
 	private Sexo sexo;
 	public enum Sexo { mujer , hombre }
 	
@@ -25,13 +26,13 @@ public  class Persona {
 	public String getSegundoApellido() {
 		return segundoApellido;
 	}
-	public Date getFechaNacimiento() {
+	public Instant getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	public Sexo getSexo() {
 		return sexo;
 	}
-	public Persona(String dni, String nombre, String primerApello, String segundoApellido, Date fechaNacimiento, Sexo sexo) {
+	public Persona(String dni, String nombre, String primerApello, String segundoApellido, Instant fechaNacimiento, Sexo sexo) {
 		
 		this.dni = dni;
 		this.nombre = nombre;
@@ -40,6 +41,24 @@ public  class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Persona other = (Persona) obj;
+        if (dni == null) {
+            if (other.dni != null)
+                return false;
+        } else if (!dni.equals(other.dni))
+            return false;
+        return true;
+    }
+	
 	
 	
 	

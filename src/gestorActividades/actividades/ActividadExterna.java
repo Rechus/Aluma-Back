@@ -2,7 +2,7 @@ package gestorActividades.actividades;
 
 import java.time.Instant;
 
-import java.util.Scanner;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 import gestorActividades.gestorReservas.Reserva;
@@ -56,6 +56,8 @@ public class ActividadExterna extends ActividadImp {
 		}
 		return plazaDeseada;
 	}
+	
+	
 
 	@Override
 	public void reservar(Persona persona) {

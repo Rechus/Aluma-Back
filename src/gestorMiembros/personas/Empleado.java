@@ -1,6 +1,7 @@
 package gestorMiembros.personas;
 
-import java.util.Date;
+import java.time.Instant;
+
 
 public class Empleado extends Persona {
 	
@@ -18,7 +19,7 @@ public class Empleado extends Persona {
 
 
 
-	public Empleado(String dni, String nombre, String primerApello, String segundoApellido, Date fechaNacimiento,
+	public Empleado(String dni, String nombre, String primerApello, String segundoApellido, Instant fechaNacimiento,
 			Sexo sexo, String puesto) {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.puesto = puesto;
