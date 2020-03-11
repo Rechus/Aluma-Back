@@ -1,0 +1,153 @@
+
+==MVP== 
+Fecha: 11/03/20
+
+Añadido Gestor de Actividades:
+
+* Creacción de actividades
+* Borrado de actividades
+* Creacción de reservas
+* Confirmación de reservas
+* Listado de participantes
+* Listado de reservas.
+
+
+== RESULTADO DE LAS PRUEBAS ==
+
+====PRUEBA DE CREACCIÓN DE ACTIVIDADES====
+
+listado de Actividades:
+Visita Alhambra
+Visita a Sierra Nevada
+Visita Albaicín
+
+====PRUEBA DE BORRADO DE ACTIVIDADES ====
+
+listado de Actividades:
+Visita Alhambra
+Visita a Sierra Nevada
+
+====PRUEBA DE ACTIVIDAD LOCAL====
+
+---Prueba reserva empleados---
+
+Listado de reservas:
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: false
+
+---Prueba intentar reservar misma persona---
+
+Ya existe una reserva para esa persona
+
+Listado de reservas:
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: false
+Número reserva: 5 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.521991Z Reserva confirmada: false
+
+---Prueba superar limite reservas empleados---
+
+Limite de reservas alcanzado para empleados
+
+Listado de reservas:
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: false
+Número reserva: 5 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.521991Z Reserva confirmada: false
+
+---Prueba reservas no empleados---
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.522422Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.522439Z Reserva confirmada: false
+Número reserva: 3 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.522461Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: false
+Número reserva: 5 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.521991Z Reserva confirmada: false
+
+---Prueba superar limite reservas---
+
+Limite de reservas alcanzado
+Listado de reservas:
+Número reserva: 1 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.522422Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.522439Z Reserva confirmada: false
+Número reserva: 3 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.522461Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: false
+Número reserva: 5 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.521991Z Reserva confirmada: false
+
+---Prueba confirmación reservas---
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.522422Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.522439Z Reserva confirmada: true
+Número reserva: 3 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.522461Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.511180Z Reserva confirmada: true
+Número reserva: 5 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.521991Z Reserva confirmada: true
+
+Listado de participantes:
+DNI : 1234580A Nombre: Barret Primer Apellido: Wallace
+DNI : 1234567A Nombre: Cloud Primer Apellido: Strife
+DNI : 1234568A Nombre: Aeris Primer Apellido: Gainsborough
+
+====PRUEBA DE ACTIVIDAD EXTERNA====
+
+---Prueba reserva empleados---
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: false
+
+---Prueba intentar reservar misma persona---
+
+Ya existe una reserva para esa persona
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.524051Z Reserva confirmada: false
+
+---Prueba superar limite reservas empleados---
+
+No existen plazas libres para empleados
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.524051Z Reserva confirmada: false
+
+---Prueba reservas no empleados---
+
+Tifa elige plaza número: 3
+Barret elige plaza número: 3
+Plaza ocupada, por favor, ingrese una plaza libre
+Barret elige plaza número: 2
+Plaza ocupada, por favor, ingrese una plaza libre
+Barret elige plaza número: 4
+Nanaki elige plaza número: 4
+Plaza ocupada, por favor, ingrese una plaza libre
+Nanaki elige plaza número: 3
+Plaza ocupada, por favor, ingrese una plaza libre
+Nanaki elige plaza número: 2
+Plaza ocupada, por favor, ingrese una plaza libre
+Nanaki elige plaza número: 5
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.524051Z Reserva confirmada: false
+Número reserva: 3 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.524856Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.525083Z Reserva confirmada: false
+Número reserva: 5 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.525376Z Reserva confirmada: false
+
+---Prueba superar limite reservas---
+
+Cid elige No existen plazas libres en esta actividad
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: false
+Número reserva: 2 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.524051Z Reserva confirmada: false
+Número reserva: 3 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.524856Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.525083Z Reserva confirmada: false
+Número reserva: 5 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.525376Z Reserva confirmada: false
+
+---Prueba confirmación reservas---
+
+Listado de reservas:
+Número reserva: 1 DNI: 1234567A fecha reserva: 2020-03-11T19:41:24.523853Z Reserva confirmada: true
+Número reserva: 2 DNI: 1234568A fecha reserva: 2020-03-11T19:41:24.524051Z Reserva confirmada: true
+Número reserva: 3 DNI: 1234569A fecha reserva: 2020-03-11T19:41:24.524856Z Reserva confirmada: false
+Número reserva: 4 DNI: 1234580A fecha reserva: 2020-03-11T19:41:24.525083Z Reserva confirmada: true
+Número reserva: 5 DNI: 0000013A fecha reserva: 2020-03-11T19:41:24.525376Z Reserva confirmada: false
+
+Listado de participantes:
+DNI : 1234567A Nombre: Cloud Primer Apellido: Strife
+DNI : 1234568A Nombre: Aeris Primer Apellido: Gainsborough
+DNI : 1234580A Nombre: Barret Primer Apellido: Wallace
