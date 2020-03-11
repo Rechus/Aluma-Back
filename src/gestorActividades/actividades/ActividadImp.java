@@ -97,7 +97,7 @@ public abstract class ActividadImp implements Actividad {
 		 * no
 		 */
 		for (Reserva reserva : this.getListaReservas().values()) {
-			if (reserva.getPersona().equals(persona)) {
+			if (reserva.getPersona().equals(persona) && reserva.isConfirmado() == false) {
 				/* En caso de encontrarla cambia el estado a confirmado */
 				reserva.setConfirmado(true);
 				/*
@@ -109,9 +109,7 @@ public abstract class ActividadImp implements Actividad {
 				// añadimos a la persona a la lista de participantes
 				this.getListaParticipantes().put(numeroReserva, reserva.getPersona());
 				break;
-
-			} 
-//				System.out.println("La persona introducida no tiene ninguna reserva asociada para esta actividad");
+			}
 		}
 	}
 
