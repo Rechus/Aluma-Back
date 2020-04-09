@@ -11,8 +11,10 @@ import gestorMiembros.personas.Persona;
 public class ActividadExterna extends ActividadImp {
 
 	private String destino;
+	// Esto tiene pinta de esta mejor en su propio archivo en vez de aqui
 	private Transporte tipoTransporte;
 
+	// Se usan mayusculas: https://google.github.io/styleguide/javaguide.html#s4.8.1-enum-classes
 	public enum Transporte {
 		autobus, tren, avion
 	}
@@ -32,12 +34,14 @@ public class ActividadExterna extends ActividadImp {
 		this.tipoTransporte = transporte;
 	}
 
+	// No se como se puede elegir plaza sin tener ni un solo parametro
 	public int elegirPlaza() {
 		int plazaDeseada = -1;
 		/* Miramos que no esté llena ya la lista antes de elegir */
 
 		try {
 			if (this.getListaReservas().size() == this.getNumeroPlazas() + this.getReservaPlazasEmpleados()) {
+				// Esto me huele a otra cuenta la vieja
 				plazaDeseada = -2;
 
 			} else {
@@ -46,9 +50,10 @@ public class ActividadExterna extends ActividadImp {
 				 * utilizo un número entero aleatorio para simular la elección de plaza por
 				 * parte del usuario, está función se implementará posteriormente
 				 */
-
+				// Pues entonces lo pones en el main o mejor en test, no aqui. Esto lo debes corregir
 				plazaDeseada = ThreadLocalRandom.current().nextInt(this.getReservaPlazasEmpleados(),
 						this.getNumeroPlazas() + this.getReservaPlazasEmpleados() + 1);
+				// Sacas muchas cosas por consola en tus clases de negocio
 				System.out.println("plaza número: " + plazaDeseada);
 
 				/* Buscamos si exise una reserva con numero de la plaza deseada */
@@ -63,6 +68,9 @@ public class ActividadExterna extends ActividadImp {
 			 * Si ocurre la excepción es porque es el primero en reservar por lo tanto no
 			 * es necesario comprobar que la plaza esté ocupada
 			 */
+			// Las excepciones no se usan para controlar el flujo de la aplicacion
+			// es para responder a errores o casos descontrolados, pero no para algo que sabes que
+			// va a pasar (siempre habra un primero). Corrigelo
 			plazaDeseada = ThreadLocalRandom.current().nextInt(this.getReservaPlazasEmpleados(),
 					this.getNumeroPlazas() + this.getReservaPlazasEmpleados() + 1);
 
@@ -72,6 +80,12 @@ public class ActividadExterna extends ActividadImp {
 	}
 
 	@Override
+	// Y otro metodo de scroll repitiendo cosas que ya deberian estar hechas aparte
+	// como comprobar la reserva, plazas completas, encontrar el numero, etc... todo
+	// lo que ya escribi en ActividadLocal y que deberia estar en ActividadImpl porque
+	// es codigo para compartir
+	// En serio, como pueds hacer un metodo con mas de cien lineas de codigo?
+	// Empieza a refactorizar y dividir el problema ya
 	public void reservar(Persona persona) {
 		boolean existeReserva = false;
 		for (Reserva reserva : this.getListaReservas().values()) {
@@ -91,7 +105,8 @@ public class ActividadExterna extends ActividadImp {
 			 * de reserva, la implentación del resto de transporte será exactamente igual
 			 * que en la actividad local
 			 */
-
+			// Y aqui es cuando tu sistema de los TreeMap se va al carajo
+						// No hace falta poner ActividadExterna antes de Transporte
 			if (this.getTipoTransporte().equals(ActividadExterna.Transporte.autobus)) {
 				if (!(persona instanceof Empleado)) {
 
@@ -101,7 +116,9 @@ public class ActividadExterna extends ActividadImp {
 						System.out.print(persona.getNombre() + " elige ");
 						plazaDeseada = elegirPlaza();
 					}
-
+					// Y aqui aparece la cuenta la vieja, que otro desarrollador
+					// tendra que empezar a buscar por que se hizo asi y te empezaran
+					// a silbar los oidos
 					if (plazaDeseada == -2) {
 						System.out.println("No existen plazas libres en esta actividad");
 					} else {

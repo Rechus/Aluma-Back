@@ -12,7 +12,15 @@ public abstract class ActividadImp implements Actividad {
 	private String nombre;
 	private Instant fecha;
 	private int numeroPlazas;
+	// Te pongo aqui el comentario pero es tambien para todos los sitios donde se usa:
+	// No me gusta nada usar un array aqui. Las posiciones no dicen nada, puede pasarse un array mas
+	// largo y no aporta nada tenerlos indexados. Por que es mejor que tener 3 campos distintos?
+	// o uno solo y los otros supongo que se aplicaran descuentos/bonificaciones/tasas, etc...
+	// y se calcula?
 	private double[] precio;
+	// Usa la interface Map mejor, te estas ligando a una implementacion
+	// Luego si quieres utilizala al instanciar, pero no obligues a usar esta
+	// implementacion
 	private TreeMap<Integer, Persona> listaParticipantes;
 	private TreeMap<Integer, Reserva> listaReservas;
 	// Número de plazas reservadas para empleados
@@ -26,10 +34,12 @@ public abstract class ActividadImp implements Actividad {
 		return fecha;
 	}
 
+	// Vaya nombre!! porque no setDate?
 	public void setFechaYHoraDate(Instant fecha) {
 		this.fecha = fecha;
 	}
 
+	// Me parece bien usado el getter de esta forma
 	public int getNumeroPlazas() {
 		return numeroPlazas - reservaPlazasEmpleados;
 	}
@@ -66,6 +76,12 @@ public abstract class ActividadImp implements Actividad {
 		 * está implementación asociamos el número de la lista de participantes al
 		 * asiento que corresponda en el medio de transporte
 		 */
+		// No me gusta nada. Ya te toca coordinar que no te falle esa sincronizacion.
+		// La Reserva ya tiene un campo Persona que lo asocia. Por que no lo usas?
+		// Lo del transporte es otra cosa. Como sabes si tendra ese numero los transportes?
+		// Puede ser que vayan en varios, que no empiece por el asiento 1 (algo normal en los buses)
+		// o cualquier otra cosa que te tire por tierra esto. No compliques, ni mezcles cosas
+		// por que mas pronto que tarde te daras cuenta que no funciona como esperabas
 		this.listaParticipantes = new TreeMap<Integer, Persona>();
 		this.listaReservas = new TreeMap<Integer, Reserva>();
 		this.reservaPlazasEmpleados = reservaPlazasEmpleados;
@@ -89,7 +105,13 @@ public abstract class ActividadImp implements Actividad {
 	 * revisado que el pago ha sido realizado, la reserva pasa a estar confirmada y
 	 * se añade la persona a la lista de participantes
 	 */
-
+	// Ya te podias haber atrevido con un lambda y quedaria
+	//	getListaReservas().values().stream()
+	//		.filter(r -> r.getPersona().equals(persona))
+	//		.findFirst().ifPresent(r -> {
+	//			r.setConfirmado(true);
+	//			getListaParticipantes().put(r.getNumeroReserva(), r.getPersona());
+	//		});
 	public void confirmarReserva(Persona persona) {
 		int numeroReserva = -1;
 		/*
@@ -113,6 +135,9 @@ public abstract class ActividadImp implements Actividad {
 		}
 	}
 
+	// No hagas metodos en negocio para formatear "informes" en String
+	// Tienes un metodo para devolver la coleccion y el que lo tenga que presentar que
+	// lo haga como quiera en formato, idioma, agregados o que lo cocine como sea
 	public String listarReservas() {
 		String resultado = "";
 

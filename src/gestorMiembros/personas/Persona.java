@@ -11,12 +11,14 @@ public  class Persona {
 	private String segundoApellido;
 	private Instant fechaNacimiento;
 	private Sexo sexo;
+	// Esto queda mejor al principio y static (aunque sea asi por defecto)
 	public enum Sexo { mujer , hombre }
 	
 	public String getDni() {
 		return dni;
 	}
 	
+	// Fijate en los espacios verticales hasta el constructor
 	public String getNombre() {
 		return nombre;
 	}
@@ -43,6 +45,9 @@ public  class Persona {
 	}
 	
 	@Override
+	// Cuando se implementa el metodo equals tambien hay que
+	// implementar el hashCode() Esto os lo dije en la sesion y esta en el blog
+	// A ver si me explicas por que
 	public boolean equals(Object obj) {
 		if (this == obj)
             return true;

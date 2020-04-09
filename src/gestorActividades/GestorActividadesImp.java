@@ -24,12 +24,14 @@ public class GestorActividadesImp implements gestorActividades {
 	}
 
 	/* Sobrecargamos crear actividad para los diferentes tipo de esta */
+	// Aqui si me parece apropiado usar crear (hay un new)
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
 			int reservaPlazasEmpleados) {
 		ActividadLocal actividad = new ActividadLocal(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 		this.getListaActividades().add(actividad);
 	}
 
+	// Aqui si me parece apropiado usar crear (hay un new)
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
 			int reservaPlazasEmpleados, String destino, ActividadExterna.Transporte transporte) {
 		ActividadExterna actividad = new ActividadExterna(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados,
@@ -38,6 +40,8 @@ public class GestorActividadesImp implements gestorActividades {
 	}
 
 	@Override
+	// Aqui no, yo no lo veo como una sobrecarga, veo que los otros deben
+	// usar este metodo addActividad(Actividad)
 	public void crearActividad(Actividad actividad) {
 
 		this.getListaActividades().add(actividad);

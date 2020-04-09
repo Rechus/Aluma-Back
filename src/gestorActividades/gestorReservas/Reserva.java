@@ -40,7 +40,7 @@ public class Reserva {
 	public void setConfirmado(boolean confirmado) {
 		this.confirmado = confirmado;
 	}
-	
+	// Tienes un problema con los espacios verticales
 	
 
 	public int getNumeroReserva() {

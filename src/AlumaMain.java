@@ -11,6 +11,7 @@ import gestorMiembros.personas.Socio;
 public class AlumaMain {
 
 	public static void main(String[] args) {
+		// Usa la interface en la variable porque si no que sentido tiene?
 		GestorActividadesImp gestorActividadesImp = new GestorActividadesImp();
 		
 		// Creamos una actividad local

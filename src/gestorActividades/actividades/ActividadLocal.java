@@ -13,8 +13,11 @@ public class ActividadLocal extends ActividadImp {
 	}
 
 	@Override
+	// Donde ha quedado que los metodos deben leerse sin hacer scroll?
+	// Divide el metodo en varios mas con responsaiblidades claras
 	public void reservar(Persona persona) {
 		boolean existeReserva = false;
+		// Uno para comprobar una reserva
 		/* Comprobamos que no exista una reserva para esa persona */
 		for (Reserva reserva : this.getListaReservas().values()) {
 			if (reserva.getPersona().equals(persona)) {
@@ -23,11 +26,16 @@ public class ActividadLocal extends ActividadImp {
 			}
 			existeReserva = false;
 		}
-		if (existeReserva) {
+		if (existeReserva) {// Que se usa aqui
+			// No saques un mensaje por consola que no sirve de nada si nadie lo mira
+			// Porque no devolver un boolean que indique si se ha reservado o no?
+			// Con eso si puedes trabajar y tomar decisiones en el codigo
+			// Aqui pondrias el valor a false para devolverlo
 			System.out.println("Ya existe una reserva para esa persona");
 
 		} else {
 			Integer valorUltimaReserva;
+			// Esto debe hacerte saltar la alarma de un diseno pobre
 			if (!(persona instanceof Empleado)) {
 
 				/*
@@ -35,7 +43,14 @@ public class ActividadLocal extends ActividadImp {
 				 * están descontandas las plazas reservadas para los empleados, getnumeroplazas
 				 * = numero de plazas - numero de plazas reservadas a empleados
 				 */
+				// Otro metodo para encontrar el numero
+				// Esto me hace pensar que confias en tu idea de los enteros para mas cosas todavia
+				// Ya te digo que hay que buscar otra solucion
+				// Algo tan simple como recorrer las reservas y encontrar la mayor
+				// getListaReservas().values().stream().mapToInt(Reserva::getNumeroReserva).min();
+				// pero ahorrandore el .values() si no es un mapa y es simplemente una coleccion
 				valorUltimaReserva = this.getListaReservas().floorKey(this.getNumeroPlazas());
+				// Cambia null por un Optional empty para saberlo
 				// Si nos devuelve null significa que no hay ninguna reserva aún
 				if (valorUltimaReserva == null) {
 					valorUltimaReserva = 0;
@@ -45,6 +60,7 @@ public class ActividadLocal extends ActividadImp {
 					// añadimos el numero de reserva al atributo de la reserva del mismo nombre
 					this.getListaReservas().get(valorUltimaReserva + 1).setNumeroReserva(valorUltimaReserva + 1);
 				} else {
+					// Otro metodo para saber si no quedan plazas que deberias usarlo antes
 					System.out.println("Limite de reservas alcanzado");
 				}
 			} else {
@@ -61,6 +77,7 @@ public class ActividadLocal extends ActividadImp {
 					 * En caso de que haya una reserva de empleado hecha, solo tenemos que coger la
 					 * clave más alta de nuestro mapa y sumarle uno a la clave
 					 */
+					// Eres un maestro de la cuenta la vieja macho. Vas a sufrir por este camino
 					valorUltimaReserva = this.getListaReservas().lastKey();
 					if (valorUltimaReserva < (this.getNumeroPlazas() + getReservaPlazasEmpleados())) {
 						this.getListaReservas().put(valorUltimaReserva + 1, new Reserva(persona, this));
