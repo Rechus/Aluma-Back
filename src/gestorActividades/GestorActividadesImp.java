@@ -10,7 +10,7 @@ import gestorActividades.actividades.ActividadExterna;
 import gestorActividades.actividades.ActividadImp;
 import gestorActividades.actividades.ActividadLocal;
 
-public class GestorActividadesImp implements gestorActividades {
+public class GestorActividadesImp implements GestorActividades {
 
 	private Collection<Actividad> listaActividades;
 
@@ -24,14 +24,13 @@ public class GestorActividadesImp implements gestorActividades {
 	}
 
 	/* Sobrecargamos crear actividad para los diferentes tipo de esta */
-	// Aqui si me parece apropiado usar crear (hay un new)
+
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
 			int reservaPlazasEmpleados) {
 		ActividadLocal actividad = new ActividadLocal(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 		this.getListaActividades().add(actividad);
 	}
 
-	// Aqui si me parece apropiado usar crear (hay un new)
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
 			int reservaPlazasEmpleados, String destino, ActividadExterna.Transporte transporte) {
 		ActividadExterna actividad = new ActividadExterna(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados,
@@ -40,9 +39,7 @@ public class GestorActividadesImp implements gestorActividades {
 	}
 
 	@Override
-	// Aqui no, yo no lo veo como una sobrecarga, veo que los otros deben
-	// usar este metodo addActividad(Actividad)
-	public void crearActividad(Actividad actividad) {
+	public void addActividad(Actividad actividad) {
 
 		this.getListaActividades().add(actividad);
 	}
@@ -58,8 +55,8 @@ public class GestorActividadesImp implements gestorActividades {
 	}
 
 	@Override
-	public void borrarActividad(String nombre) {
-		//creamos el iterador y copiamos nuestra lista
+	public void removeActividad(String nombre) {
+		// creamos el iterador y copiamos nuestra lista
 		Iterator<Actividad> recorrer = this.getListaActividades().iterator();
 		while (recorrer.hasNext()) {
 			Actividad actividad = recorrer.next();
@@ -67,7 +64,6 @@ public class GestorActividadesImp implements gestorActividades {
 				recorrer.remove();
 			}
 		}
-
 	}
 
 	@Override
