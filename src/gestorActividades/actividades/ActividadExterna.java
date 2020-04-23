@@ -27,7 +27,7 @@ public class ActividadExterna extends ActividadImp {
 		return tipoTransporte;
 	}
 
-	public ActividadExterna(String nombre, Instant fecha, int numeroPlazas, double[] precio, int reservaPlazasEmpleados,
+	public ActividadExterna(String nombre, Instant fecha, int numeroPlazas, double precio, int reservaPlazasEmpleados,
 			String destino, ActividadExterna.Transporte transporte) {
 		super(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 		this.destino = destino;

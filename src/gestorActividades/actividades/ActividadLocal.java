@@ -8,30 +8,17 @@ import gestorMiembros.personas.Persona;
 
 public class ActividadLocal extends ActividadImp {
 
-	public ActividadLocal(String nombre, Instant fecha, int numeroPlazas, double[] precio, int reservaPlazasEmpleados) {
+	public ActividadLocal(String nombre, Instant fecha, int numeroPlazas, double precio, int reservaPlazasEmpleados) {
 		super(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 	}
 
 	@Override
-	// Donde ha quedado que los metodos deben leerse sin hacer scroll?
-	// Divide el metodo en varios mas con responsaiblidades claras
-	public void reservar(Persona persona) {
-		boolean existeReserva = false;
-		// Uno para comprobar una reserva
-		/* Comprobamos que no exista una reserva para esa persona */
-		for (Reserva reserva : this.getListaReservas().values()) {
-			if (reserva.getPersona().equals(persona)) {
-				existeReserva = true;
-				break;
-			}
-			existeReserva = false;
-		}
-		if (existeReserva) {// Que se usa aqui
-			// No saques un mensaje por consola que no sirve de nada si nadie lo mira
-			// Porque no devolver un boolean que indique si se ha reservado o no?
-			// Con eso si puedes trabajar y tomar decisiones en el codigo
-			// Aqui pondrias el valor a false para devolverlo
-			System.out.println("Ya existe una reserva para esa persona");
+	public boolean reservar(Persona persona) {
+		if(comprobarReserva(persona)) {
+			return false;
+	}else {
+		
+	}
 
 		} else {
 			Integer valorUltimaReserva;

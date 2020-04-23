@@ -25,13 +25,13 @@ public class GestorActividadesImp implements GestorActividades {
 
 	/* Sobrecargamos crear actividad para los diferentes tipo de esta */
 
-	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
+	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double precio,
 			int reservaPlazasEmpleados) {
 		ActividadLocal actividad = new ActividadLocal(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 		this.getListaActividades().add(actividad);
 	}
 
-	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double[] precio,
+	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double precio,
 			int reservaPlazasEmpleados, String destino, ActividadExterna.Transporte transporte) {
 		ActividadExterna actividad = new ActividadExterna(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados,
 				destino, transporte);

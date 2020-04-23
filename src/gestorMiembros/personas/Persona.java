@@ -19,7 +19,6 @@ public class Persona {
 		return dni;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -52,9 +51,14 @@ public class Persona {
 	}
 
 	@Override
-	// Cuando se implementa el metodo equals tambien hay que
-	// implementar el hashCode() Esto os lo dije en la sesion y esta en el blog
-	// A ver si me explicas por que
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
