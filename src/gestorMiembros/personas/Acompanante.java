@@ -15,4 +15,5 @@ public class Acompanante extends Persona {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.socioDependiente = socioDependiente;
 	}
+
 }

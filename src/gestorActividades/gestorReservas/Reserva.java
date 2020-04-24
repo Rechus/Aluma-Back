@@ -57,4 +57,10 @@ public class Reserva {
 		this.confirmado = false;
 	}
 
+	@Override
+	public String toString() {
+		return "Reserva [getPersona()=" + getPersona() +  ", getActividad()="
+				+ getActividad() + ", isConfirmado()=" + isConfirmado() + ", getNumeroReserva()=" + getNumeroReserva()
+				+ "]";
+	}
 }

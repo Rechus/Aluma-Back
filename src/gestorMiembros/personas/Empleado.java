@@ -19,4 +19,5 @@ public class Empleado extends Persona {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.puesto = puesto;
 	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import gestorActividades.gestorReservas.Reserva;
+import gestorMiembros.personas.Empleado;
 import gestorMiembros.personas.Persona;
 
 public abstract class ActividadImp implements Actividad {
@@ -30,11 +31,19 @@ public abstract class ActividadImp implements Actividad {
 	}
 
 	public int getNumeroPlazas() {
+		return numeroPlazas;
+	}
+
+	public int getNumeroPlazasNoEmp() {
 		return numeroPlazas - reservaPlazasEmpleados;
 	}
 
 	public double getPrecio() {
 		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	public void setNumeroPlazas(int limitePlazas) {
@@ -68,10 +77,17 @@ public abstract class ActividadImp implements Actividad {
 		this.reservaPlazasEmpleados = reservaPlazasEmpleados;
 	}
 
-	public abstract boolean reservar(Persona persona);
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
+	public boolean reservar(Persona persona) {
+		if (comprobarReserva(persona)) {
+			return false;
+		} else {
+			if (comprobarDisponbilidad(persona)) {
+				getListaReservas().add(new Reserva(persona, this));
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	public void confirmarReserva(Persona persona) {
@@ -83,5 +99,15 @@ public abstract class ActividadImp implements Actividad {
 
 	public boolean comprobarReserva(Persona persona) {
 		return getListaReservas().stream().anyMatch(r -> r.getPersona().equals(persona));
+	}
+
+	public boolean comprobarDisponbilidad(Persona persona) {
+		if (persona.getClass().equals(Empleado.class)) {
+			return getListaReservas().stream().filter(r -> r.getPersona().getClass().equals(Empleado.class))
+					.count() < getReservaPlazasEmpleados();
+		} else {
+			return getListaReservas().stream().filter(r -> !(r.getPersona().getClass().equals(Empleado.class)))
+					.count() < getNumeroPlazasNoEmp();
+		}
 	}
 }

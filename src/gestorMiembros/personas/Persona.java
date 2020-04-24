@@ -75,4 +75,9 @@ public class Persona {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", primerApello=" + primerApello + ", sexo=" + sexo + "]";
+	}
+	
 }

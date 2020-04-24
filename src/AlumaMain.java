@@ -1,7 +1,7 @@
 import java.time.Instant;
-
 import gestorActividades.GestorActividadesImp;
-import gestorActividades.actividades.ActividadExterna.Transporte;
+import gestorActividades.actividades.transporte.Autobus;
+import gestorActividades.actividades.transporte.Transporte;
 import gestorMiembros.personas.Acompanante;
 import gestorMiembros.personas.Empleado;
 import gestorMiembros.personas.Persona.Sexo;
@@ -14,23 +14,24 @@ public class AlumaMain {
 		GestorActividadesImp gestorActividadesImp = new GestorActividadesImp();
 
 		// Creamos una actividad local
-		double precios[] = { 10, 15, 20 };
+		double precios = 10;
+		Transporte autobus = new Autobus("Microbus", 10);
+
 		gestorActividadesImp.crearActividad("Visita Alhambra", Instant.now(), 5, precios, 2);
 
 		// Creamos una actividad externa
 
 		gestorActividadesImp.crearActividad("Visita a Sierra Nevada", Instant.now(), 5, precios, 2, "Monachil",
-				Transporte.autobus);
+				autobus);
 
 		// Creamos otra actividad local
 		gestorActividadesImp.crearActividad("Visita Albaicín", Instant.now(), 5, precios, 1);
-
 		System.out.println("====PRUEBA DE CREACCIÓN DE ACTIVIDADES====\n");
 		System.out.println(gestorActividadesImp.toString());
 
 		// Prueba de borrado de actividades
 		System.out.println("====PRUEBA DE BORRADO DE ACTIVIDADES ====\n");
-		gestorActividadesImp.borrarActividad("Visita Albaicín");
+		gestorActividadesImp.removeActividad("Visita Albaicín");
 
 		System.out.println(gestorActividadesImp.toString());
 
@@ -45,76 +46,76 @@ public class AlumaMain {
 		Socio socio2 = new Socio("1234580A", "Barret", "Wallace", " ", Instant.now(), Sexo.hombre, "002");
 		Acompanante aco1 = new Acompanante("0000013A", "Nanaki", "Red XIII", " ", Instant.now(), Sexo.hombre, socio1);
 		Acompanante aco2 = new Acompanante("7283927A", "Cid", "Highwind", " ", Instant.now(), Sexo.hombre, socio2);
-
+		
 		// Prueba de actividad local
 		System.out.println("====PRUEBA DE ACTIVIDAD LOCAL====\n");
 
 		System.out.println("---Prueba reserva empleados---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(empleado1);
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
 
 		System.out.println("---Prueba intentar reservar misma persona---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(empleado1);
 		System.out.print("\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(empleado2);
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
 
 		System.out.println("---Prueba superar limite reservas empleados---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(empleado3);
 		System.out.print("\n");
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
 
 		System.out.println("---Prueba reservas no empleados---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(socio1);
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(socio2);
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(aco1);
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
 
 		System.out.println("---Prueba superar limite reservas---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").reservar(aco2);
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
 
 		System.out.println("---Prueba confirmación reservas---\n");
 		gestorActividadesImp.getActividad("Visita Alhambra").confirmarReserva(empleado1);
 		gestorActividadesImp.getActividad("Visita Alhambra").confirmarReserva(empleado2);
 		gestorActividadesImp.getActividad("Visita Alhambra").confirmarReserva(socio2);
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarReservas());
-		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").listarParticipantes());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaReservas().toString());
+		System.out.println(gestorActividadesImp.getActividad("Visita Alhambra").getListaParticipantes().toString());
 
 		// Prueba de actividad externa
 		System.out.println("====PRUEBA DE ACTIVIDAD EXTERNA====\n");
 
 		System.out.println("---Prueba reserva empleados---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(empleado1);
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
 
 		System.out.println("---Prueba intentar reservar misma persona---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(empleado1);
 		System.out.print("\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(empleado2);
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
 
 		System.out.println("---Prueba superar limite reservas empleados---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(empleado3);
 		System.out.print("\n");
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
 
 		System.out.println("---Prueba reservas no empleados---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(socio1);
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(socio2);
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(aco1);
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
 
 		System.out.println("---Prueba superar limite reservas---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").reservar(aco2);
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
 
 		System.out.println("---Prueba confirmación reservas---\n");
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").confirmarReserva(empleado1);
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").confirmarReserva(empleado2);
 		gestorActividadesImp.getActividad("Visita a Sierra Nevada").confirmarReserva(socio2);
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarReservas());
-		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").listarParticipantes());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaReservas().toString());
+		System.out.println(gestorActividadesImp.getActividad("Visita a Sierra Nevada").getListaParticipantes().toString());
 
 	}
 

@@ -9,6 +9,7 @@ import gestorActividades.actividades.Actividad;
 import gestorActividades.actividades.ActividadExterna;
 import gestorActividades.actividades.ActividadImp;
 import gestorActividades.actividades.ActividadLocal;
+import gestorActividades.actividades.transporte.Transporte;
 
 public class GestorActividadesImp implements GestorActividades {
 
@@ -23,7 +24,6 @@ public class GestorActividadesImp implements GestorActividades {
 		this.listaActividades = new ArrayList<Actividad>();
 	}
 
-	/* Sobrecargamos crear actividad para los diferentes tipo de esta */
 
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double precio,
 			int reservaPlazasEmpleados) {
@@ -32,7 +32,7 @@ public class GestorActividadesImp implements GestorActividades {
 	}
 
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double precio,
-			int reservaPlazasEmpleados, String destino, ActividadExterna.Transporte transporte) {
+			int reservaPlazasEmpleados, String destino, Transporte transporte) {
 		ActividadExterna actividad = new ActividadExterna(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados,
 				destino, transporte);
 		this.getListaActividades().add(actividad);
@@ -65,14 +65,4 @@ public class GestorActividadesImp implements GestorActividades {
 			}
 		}
 	}
-
-	@Override
-	public String toString() {
-		String resultado = "";
-		for (Actividad actividad : this.getListaActividades()) {
-			resultado = resultado + actividad.getNombre() + "\n";
-		}
-		return "listado de Actividades:\n" + resultado;
-	}
-
 }
