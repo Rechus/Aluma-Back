@@ -1,10 +1,8 @@
-package gestorActividades.actividades;
+package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
 
-import gestorActividades.gestorReservas.Reserva;
-import gestorMiembros.personas.Empleado;
-import gestorMiembros.personas.Persona;
+
 
 public class ActividadLocal extends ActividadImp {
 

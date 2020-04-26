@@ -1,9 +1,10 @@
-package gestorActividades.gestorReservas;
+package asociacion.aluma.gestorActividades.gestorReservas;
 
 import java.time.Instant;
 
-import gestorActividades.actividades.Actividad;
-import gestorMiembros.personas.Persona;
+import asociacion.aluma.gestorActividades.actividades.Actividad;
+import asociacion.aluma.gestorMiembros.personas.Persona;
+
 
 public class Reserva {
 

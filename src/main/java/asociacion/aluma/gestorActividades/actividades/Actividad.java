@@ -1,4 +1,4 @@
-package gestorActividades.actividades;
+package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
 

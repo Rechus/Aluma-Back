@@ -1,12 +1,12 @@
-package gestorActividades.actividades;
+package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import gestorActividades.gestorReservas.Reserva;
-import gestorMiembros.personas.Empleado;
-import gestorMiembros.personas.Persona;
+import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
+import asociacion.aluma.gestorMiembros.personas.Empleado;
+import asociacion.aluma.gestorMiembros.personas.Persona;
 
 public abstract class ActividadImp implements Actividad {
 

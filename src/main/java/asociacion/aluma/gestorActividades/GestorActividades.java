@@ -1,6 +1,6 @@
-package gestorActividades;
+package asociacion.aluma.gestorActividades;
 
-import gestorActividades.actividades.Actividad;
+import asociacion.aluma.gestorActividades.actividades.Actividad;
 
 public interface GestorActividades {
 

@@ -1,4 +1,4 @@
-package gestorActividades.actividades.transporte;
+package asociacion.aluma.gestorActividades.actividades.transporte;
 
 public interface Transporte {
 	

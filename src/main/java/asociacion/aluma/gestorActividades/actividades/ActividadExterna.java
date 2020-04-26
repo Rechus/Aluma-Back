@@ -1,13 +1,10 @@
-package gestorActividades.actividades;
+package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
-import java.util.NoSuchElementException;
-import java.util.concurrent.ThreadLocalRandom;
 
-import gestorActividades.actividades.transporte.Transporte;
-import gestorActividades.gestorReservas.Reserva;
-import gestorMiembros.personas.Empleado;
-import gestorMiembros.personas.Persona;
+import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
+
+
 
 public class ActividadExterna extends ActividadImp {
 

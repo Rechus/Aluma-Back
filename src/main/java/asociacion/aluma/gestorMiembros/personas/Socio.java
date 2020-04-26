@@ -1,4 +1,4 @@
-package gestorMiembros.personas;
+package asociacion.aluma.gestorMiembros.personas;
 
 import java.time.Instant;
 

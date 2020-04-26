@@ -1,15 +1,18 @@
-package gestorActividades;
+package asociacion.aluma.gestorActividades;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import gestorActividades.actividades.Actividad;
-import gestorActividades.actividades.ActividadExterna;
-import gestorActividades.actividades.ActividadImp;
-import gestorActividades.actividades.ActividadLocal;
-import gestorActividades.actividades.transporte.Transporte;
+import asociacion.aluma.gestorActividades.actividades.Actividad;
+import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
+import asociacion.aluma.gestorActividades.actividades.ActividadImp;
+import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
+import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
+
+
+
 
 public class GestorActividadesImp implements GestorActividades {
 
