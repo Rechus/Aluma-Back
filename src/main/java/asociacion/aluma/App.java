@@ -3,12 +3,19 @@
  */
 package asociacion.aluma;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
+@SpringBootApplication
+@ImportResource({"classpath:config/jpa-config.xml"})
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+    	ConfigurableApplicationContext context  =
+    			SpringApplication.run(App.class, args);
+    	
+    	context.close();
     }
 }
+ 
