@@ -2,16 +2,29 @@ package asociacion.aluma.gestorActividades.gestorReservas;
 
 import java.time.Instant;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import asociacion.aluma.gestorActividades.actividades.Actividad;
+import asociacion.aluma.gestorActividades.actividades.ActividadImp;
 import asociacion.aluma.gestorMiembros.personas.Persona;
 
-
+@Entity
 public class Reserva {
-
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="PER")
 	private Persona persona;
 	private Instant fecha;
-	private Actividad actividad;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ACT")
+	private ActividadImp actividad;
 	private boolean confirmado;
+	@Id
 	private int numeroReserva;
 
 	public Persona getPersona() {
@@ -30,7 +43,7 @@ public class Reserva {
 		return actividad;
 	}
 
-	public void setActividad(Actividad actividad) {
+	public void setActividad(ActividadImp actividad) {
 		this.actividad = actividad;
 	}
 
@@ -50,7 +63,7 @@ public class Reserva {
 		this.numeroReserva = numeroReserva;
 	}
 
-	public Reserva(Persona persona, Actividad actividad) {
+	public Reserva(Persona persona, ActividadImp actividad) {
 		super();
 		this.persona = persona;
 		this.actividad = actividad;

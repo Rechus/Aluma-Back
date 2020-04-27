@@ -3,17 +3,38 @@
  */
 package asociacion.aluma;
 
+import java.time.Instant;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
+import asociacion.aluma.gestorActividades.GestorActividadesImp;
+import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
+import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadLocalDAO;
+import asociacion.aluma.gestorMiembros.personas.Persona;
+
 @SpringBootApplication
 @ImportResource({"classpath:config/jpa-config.xml"})
 public class App {
+	
+	private static final Logger log = LoggerFactory.getLogger(App.class);
+	
     public static void main(String[] args) {
     	ConfigurableApplicationContext context  =
     			SpringApplication.run(App.class, args);
+    	
+    
+    	
+    	ActividadLocal actividad = new ActividadLocal("Visita A Granada", Instant.now(), 10, 2, 1);
+       	ActividadLocalDAO actividadDAO = context.getBean(ActividadLocalDAO.class);
+    	actividadDAO.save(actividad);
+    	List<ActividadLocal> actividades = actividadDAO.findAll();
+    	actividades.stream().map(ActividadLocal::toString).forEach(log::info);
     	
     	context.close();
     }

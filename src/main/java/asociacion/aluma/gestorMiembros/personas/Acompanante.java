@@ -2,8 +2,20 @@ package asociacion.aluma.gestorMiembros.personas;
 
 import java.time.Instant;
 
-public class Acompanante extends Persona {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@DiscriminatorValue("A")
+@Table(name="ACOMPANANTES")
+public class Acompanante extends Persona {
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="SOCIO_DEP")
 	private Socio socioDependiente;
 
 	public Socio getSocioDependiente() {
@@ -14,6 +26,7 @@ public class Acompanante extends Persona {
 			Sexo sexo, Socio socioDependiente) {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.socioDependiente = socioDependiente;
+		this.tipo = "A";
 	}
 
 }

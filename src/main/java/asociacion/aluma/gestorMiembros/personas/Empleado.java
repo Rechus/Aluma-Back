@@ -2,6 +2,13 @@ package asociacion.aluma.gestorMiembros.personas;
 
 import java.time.Instant;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@DiscriminatorValue("E")
+@Table(name="EMPLEADOS")
 public class Empleado extends Persona {
 
 	private String puesto;
@@ -18,6 +25,7 @@ public class Empleado extends Persona {
 			Sexo sexo, String puesto) {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.puesto = puesto;
+		this.tipo = "E";
 	}
 	
 }
