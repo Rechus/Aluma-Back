@@ -8,13 +8,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@DiscriminatorValue("L")
 @Table(name="ACT_LOCAL")
 public class ActividadLocal extends ActividadImp {
 
 	public ActividadLocal(String nombre, Instant fecha, int numeroPlazas, double precio, int reservaPlazasEmpleados) {
 		super(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
-		this.tipo = "L";
 	}
 	
 	public ActividadLocal(){

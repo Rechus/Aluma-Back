@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue("S")
-@Table(name="EMPLEADOS")
+@Table(name="SOCIOS")
 public class Socio extends Persona {
 
 	@Column(name="NUM_SOCIO")
@@ -33,8 +33,11 @@ public class Socio extends Persona {
 			Sexo sexo, String numeroSocio) {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.numeroSocio = numeroSocio;
-		this.tipo = "S";
 		this.acompanantes = new ArrayList<>();
+	}
+	
+	public Socio() {
+		
 	}
 
 }

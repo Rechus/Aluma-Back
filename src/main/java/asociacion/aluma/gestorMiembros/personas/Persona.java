@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -21,7 +22,6 @@ import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="PERS_TIPO")
 @Table(name="PERSONAS")
 public class Persona {
 
@@ -32,18 +32,16 @@ public class Persona {
 	@Id
 	@Column(name= "PERS_DNI")
 	private String dni;
-	@Column(name="PERS_TIPO")
-	protected String tipo;
 	private String nombre;
 	private String primerApello;
 	private String segundoApellido;
 	private Instant fechaNacimiento;
 	private Sexo sexo;
 	
-	@OneToMany(mappedBy="numeroReserva")
+	@OneToMany(targetEntity=Reserva.class, cascade=CascadeType.ALL , mappedBy="persona")
 	private Collection<Reserva> listaReservas;
 	
-	@ManyToMany(targetEntity=ActividadImp.class)
+	@ManyToMany(targetEntity=ActividadImp.class, mappedBy = "listaParticipantes")
 	private Collection<ActividadImp> actividades;
 	
 
@@ -91,6 +89,10 @@ public class Persona {
 		this.sexo = sexo;
 		this.listaReservas = new ArrayList<>();
 		this.actividades = new ArrayList<>();
+	}
+	
+	public Persona() {
+		
 	}
 
 	@Override

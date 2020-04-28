@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("A")
 @Table(name="ACOMPANANTES")
 public class Acompanante extends Persona {
 	
@@ -26,7 +25,9 @@ public class Acompanante extends Persona {
 			Sexo sexo, Socio socioDependiente) {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.socioDependiente = socioDependiente;
-		this.tipo = "A";
 	}
-
+	
+	public Acompanante() {
+		
+	}
 }

@@ -11,7 +11,6 @@ import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
 
 
 @Entity
-@DiscriminatorValue("E")
 @Table(name="ACT_EXTERNA")
 public class ActividadExterna extends ActividadImp {
 
@@ -32,7 +31,9 @@ public class ActividadExterna extends ActividadImp {
 		super(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 		this.destino = destino;
 		this.transporte = transporte;
-		this.tipo = "E";
+	}
+	
+	public ActividadExterna() {	
 	}
 
 	public boolean elegirPlaza(int numero) {
