@@ -4,16 +4,17 @@
 package asociacion.aluma;
 
 import java.time.Instant;
-import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 
-import asociacion.aluma.gestorActividades.GestorActividadesImp;
 import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
 import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
 import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadExternaDAO;
@@ -31,6 +32,7 @@ import asociacion.aluma.gestorMiembros.personas.repositorio.SocioDAO;
 
 @SpringBootApplication
 @ImportResource({ "classpath:config/jpa-config.xml" })
+@Import(ConfiguracionPorJava.class)
 public class App {
 
 	private static final Logger log = LoggerFactory.getLogger(App.class);
@@ -53,15 +55,15 @@ public class App {
        	EmpleadoDAO empleadoDAO = context.getBean(EmpleadoDAO.class);
        	SocioDAO socioDAO = context.getBean(SocioDAO.class);
        	AcompananteDAO acompananteDAO = context.getBean(AcompananteDAO.class);
-       	actividad.reservar(persona);
-       	actividad.reservar(empleado);
-       	actividad.reservar(socio);
-       	actividad.reservar(acompanante);
-       	actividad.confirmarReserva(persona);
-       	actividad.confirmarReserva(empleado);
-       	actividad.confirmarReserva(socio);
-       	actividad.confirmarReserva(acompanante);
-     	
+//       	actividad.reservar(persona);
+//       	actividad.reservar(empleado);
+//       	actividad.reservar(socio);
+//       	actividad.reservar(acompanante);
+//       	actividad.confirmarReserva(persona);
+//       	actividad.confirmarReserva(empleado);
+//       	actividad.confirmarReserva(socio);
+//       	actividad.confirmarReserva(acompanante);
+////     	
     	personaDAO.save(persona);
     	empleadoDAO.save(empleado);
     	socioDAO.save(socio);
@@ -73,6 +75,6 @@ public class App {
 //    	List<ActividadLocal> actividades = actividadDAO.findAll();
 //    	actividades.stream().map(ActividadLocal::toString).forEach(log::info);
     	
-    	context.close();
+//    	context.close();
     }
 }
