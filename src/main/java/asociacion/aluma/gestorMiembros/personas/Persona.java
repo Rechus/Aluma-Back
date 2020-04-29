@@ -18,32 +18,29 @@ import javax.persistence.InheritanceType;
 import asociacion.aluma.gestorActividades.actividades.ActividadImp;
 import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
 
-
-
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@Table(name="PERSONAS")
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "PERSONAS")
 public class Persona {
 
 	public static enum Sexo {
 		mujer, hombre
 	}
-	
+
 	@Id
-	@Column(name= "PERS_DNI")
+	@Column(name = "PERS_DNI")
 	private String dni;
 	private String nombre;
 	private String primerApello;
 	private String segundoApellido;
 	private Instant fechaNacimiento;
 	private Sexo sexo;
-	
-	@OneToMany(targetEntity=Reserva.class, cascade=CascadeType.ALL , mappedBy="persona")
+
+	@OneToMany(targetEntity = Reserva.class, cascade = CascadeType.ALL, mappedBy = "persona")
 	private Collection<Reserva> listaReservas;
-	
-	@ManyToMany(targetEntity=ActividadImp.class, mappedBy = "listaParticipantes")
+
+	@ManyToMany(targetEntity = ActividadImp.class, mappedBy = "listaParticipantes")
 	private Collection<ActividadImp> actividades;
-	
 
 	public String getDni() {
 		return dni;
@@ -68,7 +65,6 @@ public class Persona {
 	public Sexo getSexo() {
 		return sexo;
 	}
-	
 
 	public Collection<Reserva> getListaReservas() {
 		return listaReservas;
@@ -90,9 +86,9 @@ public class Persona {
 		this.listaReservas = new ArrayList<>();
 		this.actividades = new ArrayList<>();
 	}
-	
+
 	public Persona() {
-		
+
 	}
 
 	@Override
@@ -124,5 +120,4 @@ public class Persona {
 	public String toString() {
 		return "Persona [dni=" + dni + ", nombre=" + nombre + ", primerApello=" + primerApello + ", sexo=" + sexo + "]";
 	}
-	
 }

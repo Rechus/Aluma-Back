@@ -5,22 +5,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("S")
-@Table(name="SOCIOS")
+@Table(name = "SOCIOS")
 public class Socio extends Persona {
 
-	@Column(name="NUM_SOCIO")
+	@Column(name = "NUM_SOCIO")
 	private String numeroSocio;
-	
-	@OneToMany(mappedBy="socioDependiente")
+
+	@OneToMany(mappedBy = "socioDependiente")
 	private Collection<Acompanante> acompanantes;
-	
+
 	public Collection<Acompanante> getAcompanantes() {
 		return acompanantes;
 	}
@@ -35,9 +33,7 @@ public class Socio extends Persona {
 		this.numeroSocio = numeroSocio;
 		this.acompanantes = new ArrayList<>();
 	}
-	
-	public Socio() {
-		
-	}
 
+	public Socio() {
+	}
 }

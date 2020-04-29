@@ -11,9 +11,6 @@ import asociacion.aluma.gestorActividades.actividades.ActividadImp;
 import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
 import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
 
-
-
-
 public class GestorActividadesImp implements GestorActividades {
 
 	private Collection<Actividad> listaActividades;
@@ -26,7 +23,6 @@ public class GestorActividadesImp implements GestorActividades {
 
 		this.listaActividades = new ArrayList<Actividad>();
 	}
-
 
 	public void crearActividad(String nombre, Instant fecha, int numeroPlazas, double precio,
 			int reservaPlazasEmpleados) {

@@ -2,20 +2,18 @@ package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="ACT_LOCAL")
+@Table(name = "ACT_LOCAL")
 public class ActividadLocal extends ActividadImp {
 
 	public ActividadLocal(String nombre, Instant fecha, int numeroPlazas, double precio, int reservaPlazasEmpleados) {
 		super(nombre, fecha, numeroPlazas, precio, reservaPlazasEmpleados);
 	}
-	
-	public ActividadLocal(){
+
+	public ActividadLocal() {
 		super();
 	}
 
@@ -25,6 +23,5 @@ public class ActividadLocal extends ActividadImp {
 				+ getNumeroPlazas() + ", getNumeroPlazasNoEmp()=" + getNumeroPlazasNoEmp() + ", getPrecio()="
 				+ getPrecio() + ", getReservaPlazasEmpleados()=" + getReservaPlazasEmpleados() + "]";
 	}
-	
-	
+
 }

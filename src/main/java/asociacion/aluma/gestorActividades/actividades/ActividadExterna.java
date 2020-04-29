@@ -2,16 +2,14 @@ package asociacion.aluma.gestorActividades.actividades;
 
 import java.time.Instant;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
 
-
 @Entity
-@Table(name="ACT_EXTERNA")
+@Table(name = "ACT_EXTERNA")
 public class ActividadExterna extends ActividadImp {
 
 	private String destino;
@@ -32,8 +30,8 @@ public class ActividadExterna extends ActividadImp {
 		this.destino = destino;
 		this.transporte = transporte;
 	}
-	
-	public ActividadExterna() {	
+
+	public ActividadExterna() {
 	}
 
 	public boolean elegirPlaza(int numero) {

@@ -16,14 +16,14 @@ import asociacion.aluma.gestorMiembros.personas.Persona;
 
 @Entity
 public class Reserva {
-	
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
-	@JoinColumn(name="PER")
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "PER")
 	private Persona persona;
 	private Instant fecha;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ACT")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACT")
 	private ActividadImp actividad;
 	private boolean confirmado;
 	@Id
@@ -73,14 +73,14 @@ public class Reserva {
 		this.confirmado = false;
 		this.numeroReserva = numeroReserva;
 	}
-	
-	public Reserva() {}
+
+	public Reserva() {
+	}
 
 	@Override
 	public String toString() {
-		return "Reserva [getPersona()=" + getPersona() +  ", getActividad()="
-				+ getActividad() + ", isConfirmado()=" + isConfirmado() + ", getNumeroReserva()=" + getNumeroReserva()
-				+ "]";
+		return "Reserva [getPersona()=" + getPersona() + ", getActividad()=" + getActividad() + ", isConfirmado()="
+				+ isConfirmado() + ", getNumeroReserva()=" + getNumeroReserva() + "]";
 	}
 
 	@Override
@@ -104,5 +104,4 @@ public class Reserva {
 			return false;
 		return true;
 	}
-	
 }

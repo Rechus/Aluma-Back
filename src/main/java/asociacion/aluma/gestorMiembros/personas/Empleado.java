@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="EMPLEADOS")
+@Table(name = "EMPLEADOS")
 public class Empleado extends Persona {
 
 	private String puesto;
@@ -25,9 +25,7 @@ public class Empleado extends Persona {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.puesto = puesto;
 	}
-	
+
 	public Empleado() {
-		
 	}
-	
 }

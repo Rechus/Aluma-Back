@@ -22,21 +22,20 @@ import asociacion.aluma.gestorMiembros.personas.Persona;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="ACTIVIDADES")
+@Table(name = "ACTIVIDADES")
 
 public abstract class ActividadImp implements Actividad {
 
 	@Id
-	@Column(name="NOMBRE_ACT")
+	@Column(name = "NOMBRE_ACT")
 	private String nombre;
 	private Instant fecha;
 	private int numeroPlazas;
 	private double precio;
 	@ManyToMany
-	@JoinTable(name="ACTIV_PART", joinColumns=@JoinColumn(name="ACT_NOMB" , referencedColumnName="NOMBRE_ACT"),
-	inverseJoinColumns=@JoinColumn(name="PART_DNI", referencedColumnName="PERS_DNI"))
+	@JoinTable(name = "ACTIV_PART", joinColumns = @JoinColumn(name = "ACT_NOMB", referencedColumnName = "NOMBRE_ACT"), inverseJoinColumns = @JoinColumn(name = "PART_DNI", referencedColumnName = "PERS_DNI"))
 	private Collection<Persona> listaParticipantes;
-	@OneToMany(targetEntity=Reserva.class, cascade=CascadeType.ALL , mappedBy="actividad")
+	@OneToMany(targetEntity = Reserva.class, cascade = CascadeType.ALL, mappedBy = "actividad")
 	private Collection<Reserva> listaReservas;
 	private int reservaPlazasEmpleados;
 

@@ -30,7 +30,7 @@ public class Autobus implements Transporte {
 		boolean ocupado = getOcupacion()[numero];
 		if (ocupado) {
 			return false;
-		}else {
+		} else {
 			ocupado = true;
 			return true;
 		}

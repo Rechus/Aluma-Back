@@ -10,11 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ACOMPANANTES")
+@Table(name = "ACOMPANANTES")
 public class Acompanante extends Persona {
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="SOCIO_DEP")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SOCIO_DEP")
 	private Socio socioDependiente;
 
 	public Socio getSocioDependiente() {
@@ -26,8 +26,7 @@ public class Acompanante extends Persona {
 		super(dni, nombre, primerApello, segundoApellido, fechaNacimiento, sexo);
 		this.socioDependiente = socioDependiente;
 	}
-	
+
 	public Acompanante() {
-		
 	}
 }
