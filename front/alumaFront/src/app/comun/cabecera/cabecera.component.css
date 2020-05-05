@@ -1,0 +1,62 @@
+
+
+
+.container-fluid{
+    
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.navbar {
+    background-color: brown;
+    height: 125px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+ 
+}
+
+.row{
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    
+}
+
+#alumaIcon{
+    padding-top: 0;
+    padding-left: 15px;
+    height: 100%;
+}
+
+#alumaIcon img{
+    height: 100%;
+}
+
+.vertical-center {
+    min-height: 100%; 
+    display: flex;
+    align-items: center;
+  }
+
+#titulo  h1{
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+#sesion{
+    min-height: 100%; 
+    display: table;
+    padding-top: 10px;
+}
+
+#sesion p{
+    color: white;
+}

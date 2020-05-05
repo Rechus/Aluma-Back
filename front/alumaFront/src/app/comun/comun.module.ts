@@ -11,6 +11,7 @@ import { PieComponent } from './pie/pie.component';
   declarations: [CabeceraComponent, LateralComponent, HomeComponent, PieComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:  [CabeceraComponent, LateralComponent, HomeComponent, PieComponent]
 })
 export class ComunModule { }
