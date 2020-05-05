@@ -32,3 +32,50 @@ out/
 .vscode/
 
 /bin/
+
+# Parte del front
+
+# compiled output
+front/alumaFront/dist
+front/alumaFront/tmp
+front/alumaFront/out-tsc
+# Only exists if Bazel was run
+front/alumaFront/bazel-out
+
+# dependencies
+front/alumaFront/node_modules
+
+# profiling files
+front/alumaFront/chrome-profiler-events*.json
+front/alumaFront/speed-measure-plugin*.json
+
+# IDEs and editors
+front/alumaFront/.idea
+front/alumaFront/.project
+front/alumaFront/.classpath
+front/alumaFront/.c9/
+front/alumaFront/*.launch
+front/alumaFront/.settings/
+front/alumaFront/*.sublime-workspace
+
+# IDE - VSCode
+front/alumaFront/.vscode/*
+front/alumaFront/!.vscode/settings.json
+front/alumaFront/!.vscode/tasks.json
+front/alumaFront/!.vscode/launch.json
+front/alumaFront/!.vscode/extensions.json
+front/alumaFront/.history/*
+
+# misc
+front/alumaFront/.sass-cache
+front/alumaFront/connect.lock
+front/alumaFront/coverage
+front/alumaFront/libpeerconnection.log
+front/alumaFront/npm-debug.log
+front/alumaFront/yarn-error.log
+front/alumaFront/testem.log
+front/alumaFront/typings
+
+# System Files
+front/alumaFront/.DS_Store
+front/alumaFront/Thumbs.db
