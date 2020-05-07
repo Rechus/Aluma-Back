@@ -1,0 +1,41 @@
+<div class="d-flex">
+
+    
+    <div class="flex-fill">
+        <h1 class="text-center">LISTA DE ACTIVIDADES</h1>
+        <mat-form-field class="d-block" id="busqueda">
+            <input #buscar matInput placeholder="Buscar..." (keyup)="filtrar(buscar.value)">
+        </mat-form-field>
+
+        <div class="text-danger" id="error" *ngIf="buscar.value!= '' && actividadesLista.length == 0">
+            No se han encontrado actividades con el valor '{{ buscar.value }}'
+        </div>
+        <h5 class="my-5 mx-2">
+            <a class="align-middle" href="">
+                <mat-icon class="mr-2 align-middle text-dark">add_circle</mat-icon>Nueva actividad</a>
+        </h5>
+
+        <div *ngIf="actividadesLista.length > 0" class="mt-5" id="mostrando">
+            Mostrando 1-{{ actividadesLista.length }} de {{ actividadesLista.length }} actividades
+            <mat-icon class="align-middle">keyboard_arrow_left</mat-icon>
+            <mat-icon class="align-middle">keyboard_arrow_right</mat-icon>
+        </div>
+
+        <div id="listaActividades" class="ml-n5 mt-2">
+            <ul>
+                <li *ngFor="let actividad of actividadesLista" [class.actividadPasada]="esPasado(actividad)">
+                    <mat-icon>event</mat-icon>
+                    <a href="">
+                        <span class="fechaActividad">
+                                {{ actividad.fecha| date:'d/M/yyyy' }} 
+                            </span>
+                        <span class="nombreActividad">
+                                {{ actividad.nombre }} 
+                            </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
