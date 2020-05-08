@@ -31,7 +31,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     PieComponent,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
   ]
 })
 export class ComunModule { }
