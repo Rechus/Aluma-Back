@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +12,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 
 
+
 @NgModule({
   declarations: [CabeceraComponent, LateralComponent, HomeComponent, PieComponent],
   imports: [
@@ -19,6 +21,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
+    FormsModule,
     RouterModule
   ],
   exports:  [

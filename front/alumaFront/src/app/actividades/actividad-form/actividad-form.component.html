@@ -1,1 +1,48 @@
-<p>actividad-form works!</p>
+<div class="d-flex" id="formulario">
+  <div class="flex-fill">
+    <div class="text-center pt-3">
+      <h2>Nueva actividad</h2>
+    </div>
+    <div class="justify-content-center">
+      <form  #f='ngForm' id="contact-form" class="form" (ngSubmit)='guardar(f)' >
+        <div class="form-group">
+          <label class="form-label" for="nombre">Nombre de la actividad</label>
+          <input [(ngModel)]="actividad.nombre" name="nombre" type="text" class="form-control" id="nombre"  placeholder="nombre" tabindex="1" required>
+        </div>
+        <div class="form-group form-inline row pl-3" id="fila">
+          <label class="form-label" for="fecha">Fecha:</label>
+          <input type="date" [(ngModel)]="actividad.timeStamp" class="form-control col-4" id="fecha" name="fecha" placeholder="fecha" tabindex="2"
+            required>
+            <div class="col-1"></div>
+          <label class="form-label" for="subject">Número de plazas:</label>
+          <input type="number" [(ngModel)]="actividad.numeroPlazas" class="form-control col-2" id="plazas" name="plazas"  tabindex="3" min="1">
+          <label class="form-label" for="subject">Precio:</label>
+          <input type="number" [(ngModel)]="actividad.precio" class="form-control col-1" id="precio" name="precio"  tabindex="4" min="0">
+        </div>
+        <div class="form-group form-inline row pl-3" id="fila">
+            <label class="form-label" for="subject">Plazas para junta:</label>
+            <input type="number" [(ngModel)]="actividad.reservaPlazasEmpleados" class="form-control col-2" id="plazasReservadas" name="plazasReservadas"
+             tabindex="5" min="0">
+  
+        </div>
+
+        <div class="row pl-3">
+          <select class="form-control form-control-sm col-2">
+            <option value="1">Local</option>
+            <option value="2">Externa</option>
+          </select>
+        </div>
+
+        <div class=row>
+          <div class="text-center pr-5">
+            <button type="submit" class="btn btn-start-order">Guardar</button>
+          </div>
+          <div class="text-center">
+            <button type="cancelar" class="btn btn-start-order" id="cancelar" routerLink=''>Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

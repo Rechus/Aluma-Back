@@ -1,4 +1,6 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-actividad-form',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActividadFormComponent implements OnInit {
 
+  actividad;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.actividad = {
+      nombre: null,
+      timeStamp: null,
+      numeroPlazas: null,
+      precio: null,
+      reservaPlazasEmpleados: null,
+      numeroPlazasNoEmp: null,
+      listaParticipantes: [],
+      listaRerservas: [],
+      destino: null
+    }
+  }
+
+  guardar(f: NgForm){
+    console.log(f);
   }
 
 }

@@ -18,6 +18,7 @@ import { ActividadFormComponent } from './actividad-form/actividad-form.componen
       {path: '', component: ActividadHomeComponent,
       children: [
       {path: 'listado', component: ActividadesListaComponent},
+      {path: 'crear', component: ActividadFormComponent},
       {path: 'listado/detalle', component: ActividadDetalleComponent}
       ]
     }
