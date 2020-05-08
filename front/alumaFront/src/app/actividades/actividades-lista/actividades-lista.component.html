@@ -3,7 +3,6 @@
 <div class="d-flex">
   
     <div class="flex-fill">
-        <h1 class="text-center">LISTA DE ACTIVIDADES</h1>
         <div class="d-block form-group" id="busqueda">
             <input #buscar matInput placeholder="Buscar..." (keyup)="filtrar(buscar.value)" class="form-control">
         </div>
@@ -11,12 +10,7 @@
         <div class="text-danger" id="error" *ngIf="buscar.value!= '' && actividadesLista.length == 0">
             No se han encontrado actividades con el valor '{{ buscar.value }}'
         </div>
-        <h5 class="my-5 mx-2">
-            <a class="align-middle" href="">
-                <i class="fas fa-plus-circle"></i>
-                Nueva actividad</a>
-        </h5>
-
+      
         <div *ngIf="actividadesLista.length > 0" class="mt-5" id="mostrando">
             Mostrando 1-{{ actividadesLista.length }} de {{ actividadesLista.length }} actividades
             <i class="fas fa-chevron-left"></i>
@@ -27,17 +21,19 @@
             <ul>
                 <li *ngFor="let actividad of actividadesLista" [class.actividadPasada]="esPasado(actividad)">
                     <i class="fas fa-calendar-day"></i>
-                    <a href="">
+                    
                         <span class="fechaActividad">
                                 {{ actividad.fecha| date:'d/M/yyyy' }} 
                             </span>
-                        <span class="nombreActividad">
-                                {{ actividad.nombre }} 
-                            </span>
-                    </a>
+                            
+                                 <span class="nombreActividad">
+                                    <a routerLink="detalle">
+                                    {{ actividad.nombre }} 
+                                    </a>
+                                </span>
+                            
                 </li>
             </ul>
         </div>
     </div>
-
 </div>
