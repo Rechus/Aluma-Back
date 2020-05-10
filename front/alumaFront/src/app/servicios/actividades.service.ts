@@ -4,4 +4,6 @@ export abstract class ActividadesService{
     
     abstract getActividadesConNombre(filtro);
 
+    abstract crearActividad(actividad);
+
 }

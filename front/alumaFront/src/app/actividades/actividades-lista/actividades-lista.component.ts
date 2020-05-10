@@ -31,4 +31,6 @@ export class ActividadesListaComponent implements OnInit {
     }
   }
 
+ 
+
 }

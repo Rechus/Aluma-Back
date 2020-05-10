@@ -4,38 +4,69 @@
       <h2>Nueva actividad</h2>
     </div>
     <div class="justify-content-center">
-      <form  #f='ngForm' id="contact-form" class="form" (ngSubmit)='guardar(f)' >
+      <form #f='ngForm' id="contact-form" class="form" (ngSubmit)='guardar(f)'>
         <div class="form-group">
           <label class="form-label" for="nombre">Nombre de la actividad</label>
-          <input [(ngModel)]="actividad.nombre" name="nombre" type="text" class="form-control" id="nombre"  placeholder="nombre" tabindex="1" required>
+          <input [(ngModel)]="actividad.nombre" name="nombre" type="text" class="form-control" id="nombre"
+            placeholder="nombre" required #nombre="ngModel">
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+            <div *ngIf="nombre.errors.required">
+              El nombre es obligario
+            </div>
+          </div>
         </div>
         <div class="form-group form-inline row pl-3" id="fila">
           <label class="form-label" for="fecha">Fecha:</label>
-          <input type="date" [(ngModel)]="actividad.timeStamp" class="form-control col-4" id="fecha" name="fecha" placeholder="fecha" tabindex="2"
-            required>
-            <div class="col-1"></div>
+          <input type="date" [(ngModel)]="actividad.date" class="form-control col-4" id="fecha" name="fecha"
+             required [(min)]="hoy" #fecha="ngModel" onkeydown="return false" required>
+          <div class="col-1"></div>
           <label class="form-label" for="subject">Número de plazas:</label>
-          <input type="number" [(ngModel)]="actividad.numeroPlazas" class="form-control col-2" id="plazas" name="plazas"  tabindex="3" min="1">
+          <input type="number" [(ngModel)]="actividad.numeroPlazas" class="form-control col-2" id="plazas" name="plazas"
+            min="1" required #plazas="ngModel">
+          <div *ngIf="plazas.invalid && (plazas.dirty || plazas.touched)" class="alert alert-danger">
+            <div *ngIf="plazas.errors.required">
+              requerido
+            </div>
+          </div>
           <label class="form-label" for="subject">Precio:</label>
-          <input type="number" [(ngModel)]="actividad.precio" class="form-control col-1" id="precio" name="precio"  tabindex="4" min="0">
-        </div>
+          <input type="number" [(ngModel)]="actividad.precio" class="form-control col-1" id="precio" name="precio"
+            min="0" required #precio='ngModel'>
+            <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+              <div *ngIf="precio.errors.required">
+                requerido
+              </div>
+            </div>
+          </div>
         <div class="form-group form-inline row pl-3" id="fila">
-            <label class="form-label" for="subject">Plazas para junta:</label>
-            <input type="number" [(ngModel)]="actividad.reservaPlazasEmpleados" class="form-control col-2" id="plazasReservadas" name="plazasReservadas"
-             tabindex="5" min="0">
-  
+          <label class="form-label" for="subject">Plazas para junta:</label>
+          <input type="number" [(ngModel)]="actividad.reservaPlazasEmpleados" class="form-control col-2"
+            id="plazasReservadas" name="plazasReservadas"  min="0" required #plazasReservadas="ngModel">
+            <div *ngIf="plazasReservadas.invalid && (plazasReservadas.dirty || plazasReservadas.touched)" class="alert alert-danger">
+              <div *ngIf="plazasReservadas.errors.required">
+                requerido
+              </div>
+              </div>
         </div>
 
         <div class="row pl-3">
-          <select class="form-control form-control-sm col-2">
-            <option value="1">Local</option>
-            <option value="2">Externa</option>
-          </select>
+          <div class="form-check">
+            <input [(ngModel)]="theCheckbox" type="checkbox" class="form-check-input" id="externa" name=externa data-md-icheck (change)="toggleVisibility($event)">
+            <label class="form-check-label" for="externa">Actividad Externa</label>
+          </div>
         </div>
-
+        <div *ngIf="marked" class="form-group">
+          <label class="form-label" for="subject">Destino:</label>
+          <input #destino="ngModel" type="text" [(ngModel)]="actividad.destino" class="form-control col-8" id="destino" name="destino"
+            required>
+            <div *ngIf="destino.invalid && (destino.dirty || destino.touched)" class="alert alert-danger">
+              <div *ngIf="destino.errors.required">
+                requerido
+              </div>
+              </div>
+        </div>
         <div class=row>
           <div class="text-center pr-5">
-            <button type="submit" class="btn btn-start-order">Guardar</button>
+            <button type="submit" class="btn btn-start-order" [disabled]="f.invalid">Guardar</button>
           </div>
           <div class="text-center">
             <button type="cancelar" class="btn btn-start-order" id="cancelar" routerLink=''>Cancelar</button>

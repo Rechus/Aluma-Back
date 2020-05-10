@@ -25,4 +25,9 @@ export class ActividadesOffService extends ActividadesService {
       }
     )
   }
+
+  crearActividad(actividad){
+    this.actividades.push(actividad);
+  }
+
 }
