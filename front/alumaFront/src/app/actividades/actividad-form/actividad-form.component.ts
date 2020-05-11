@@ -15,7 +15,7 @@ export class ActividadFormComponent implements OnInit {
   theCheckbox = false;
   dateNow : Date = new Date();
   hoy : String = this.formateoFecha();
-
+  
   constructor(private actividadesService: ActividadesService) { 
     
   }
@@ -41,7 +41,7 @@ export class ActividadFormComponent implements OnInit {
   ngOnInit(): void {
     this.actividad = {
       nombre: null,
-      date: null,
+      fecha: null,
       numeroPlazas: null,
       precio: null,
       reservaPlazasEmpleados: null,
@@ -53,16 +53,12 @@ export class ActividadFormComponent implements OnInit {
     this.marked = false;
   }
 
-  fechaHoraToTimeStamp(fecha: Date) {
-    let milisHora = new Date('1970-01-01T' + "00:00"  + 'Z').getTime();
-    let fechaSinHora=  new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
-    return fechaSinHora.getTime() + milisHora;
-  }
+
 
 
   guardar(f: NgForm) {
     console.log(f);
-    this.actividad.date = this.fechaHoraToTimeStamp(this.actividad.date);
+    console.log(this.actividad.fecha);
     this.actividadesService.crearActividad(this.actividad);
   }
 

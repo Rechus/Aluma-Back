@@ -17,8 +17,8 @@
         </div>
         <div class="form-group form-inline row pl-3" id="fila">
           <label class="form-label" for="fecha">Fecha:</label>
-          <input type="date" [(ngModel)]="actividad.date" class="form-control col-4" id="fecha" name="fecha"
-             required [(min)]="hoy" #fecha="ngModel" onkeydown="return false" required>
+          <input type="date" [(ngModel)]="actividad.fecha" class="form-control col-4" id="fecha" name="date"
+             required [(min)]="hoy" #date="ngModel" onkeydown="return false" required>
           <div class="col-1"></div>
           <label class="form-label" for="subject">Número de plazas:</label>
           <input type="number" [(ngModel)]="actividad.numeroPlazas" class="form-control col-2" id="plazas" name="plazas"
