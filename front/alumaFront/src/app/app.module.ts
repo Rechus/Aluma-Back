@@ -1,4 +1,5 @@
-import { ActividadesOffService } from './servicios/actividades-off.service';
+import { ActividadesApiService } from './servicios/actividades-api.service';
+
 import { ComunModule } from './comun/comun.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,7 @@ registerLocaleData(localeEs);
     ])
   ],
   providers: [
-    { provide: ActividadesService, useClass: ActividadesOffService},
+    { provide: ActividadesService, useClass: ActividadesApiService},
     { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
   bootstrap: [AppComponent]

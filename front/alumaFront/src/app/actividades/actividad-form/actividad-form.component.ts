@@ -3,7 +3,7 @@ import { Actividad } from './../../modelo/actividad';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,29 +20,20 @@ export class ActividadFormComponent implements OnInit {
   dateNow : Date = new Date();
   hoy : String = this.formateoFecha();
   
-  constructor(private actividadesService: ActividadesService, private router: Router ) { 
+  constructor(private actividadesService: ActividadesService,
+     private router: Router, 
+     private ruta: ActivatedRoute ) { 
     
   }
-  formateoFecha(){
-   var cadena = "";
-   var ano = this.dateNow.getFullYear();
-   var mes;
-    if (this.dateNow.getMonth() < 10){
-      mes = "0"+(this.dateNow.getMonth()+1);
-    }else{
-      mes = (this.dateNow.getMonth()+1);
-    }
-   var dia;
-   if (this.dateNow.getDate() < 10){
-    dia = "0"+this.dateNow.getDate();
-  }else{
-    dia = this.dateNow.getDate();
-  }
-  cadena = ano+"-"+mes+"-"+dia;
-  return cadena;
-  }
+
 
   ngOnInit(): void {
+    let nombre = this.ruta.snapshot.paramMap.get("noombre");
+
+    if(nombre){
+      this.actividad = this.actividadesService.getActividadesConNombre(nombre);
+    }else{
+
     this.actividad = {
       nombre: null,
       fecha: null,
@@ -65,9 +56,27 @@ export class ActividadFormComponent implements OnInit {
     }    
     this.marked = false;
   }
+  }
 
 
-
+  formateoFecha(){
+    var cadena = "";
+    var ano = this.dateNow.getFullYear();
+    var mes;
+     if (this.dateNow.getMonth() < 10){
+       mes = "0"+(this.dateNow.getMonth()+1);
+     }else{
+       mes = (this.dateNow.getMonth()+1);
+     }
+    var dia;
+    if (this.dateNow.getDate() < 10){
+     dia = "0"+this.dateNow.getDate();
+   }else{
+     dia = this.dateNow.getDate();
+   }
+   cadena = ano+"-"+mes+"-"+dia;
+   return cadena;
+   }
 
   guardar(f: NgForm) {
     console.log(this.actividadExterna);

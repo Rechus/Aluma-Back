@@ -16,7 +16,9 @@ export class ActividadesListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actividadesLista = this.actividadesService.getActividades();
+    this.actividadesService.getActividades().subscribe(
+      respuesta => (this.actividadesLista = respuesta)
+    )
   }
 
   esPasado(actividad){
@@ -26,7 +28,9 @@ export class ActividadesListaComponent implements OnInit {
 
   filtrar(filtro){
     if (!filtro || filtro.trim().lenght == 0 ){
-      this.actividadesLista = this.actividadesService.getActividades();
+      this.actividadesService.getActividades().subscribe(
+        respuesta => this.actividadesLista = respuesta['_embedded'].actividades
+      )
     }else{
       this.actividadesLista = this.actividadesService.getActividadesConNombre(filtro);
     }
