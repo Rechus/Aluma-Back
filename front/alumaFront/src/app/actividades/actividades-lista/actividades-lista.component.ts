@@ -1,3 +1,4 @@
+import { Actividad } from './../../modelo/actividad';
 import { Component, OnInit } from '@angular/core';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { fileURLToPath } from 'url';
@@ -9,7 +10,7 @@ import { fileURLToPath } from 'url';
 })
 export class ActividadesListaComponent implements OnInit {
 
-  actividadesLista;
+  actividadesLista: Actividad[];
 
   constructor(private actividadesService: ActividadesService) { 
   }

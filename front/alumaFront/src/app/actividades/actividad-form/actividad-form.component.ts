@@ -1,6 +1,9 @@
+import { ActividadExterna } from './../../modelo/actividadExterna';
+import { Actividad } from './../../modelo/actividad';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,13 +13,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActividadFormComponent implements OnInit {
 
-  actividad;
+  actividad: Actividad;
+  actividadExterna: ActividadExterna;
   marked;
   theCheckbox = false;
   dateNow : Date = new Date();
   hoy : String = this.formateoFecha();
   
-  constructor(private actividadesService: ActividadesService) { 
+  constructor(private actividadesService: ActividadesService, private router: Router ) { 
     
   }
   formateoFecha(){
@@ -44,12 +48,21 @@ export class ActividadFormComponent implements OnInit {
       fecha: null,
       numeroPlazas: null,
       precio: null,
-      reservaPlazasEmpleados: null,
-      numeroPlazasNoEmp: null,
       listaParticipantes: [],
-      listaRerservas: [],
-      destino: null
+      listaReserva: [],
+      reservaPlazasEmpleados: null,
     }
+    this.actividadExterna = {
+
+        nombre: null,
+        fecha: null,
+        numeroPlazas: null,
+        precio: null,
+        listaParticipantes: [],
+        listaReserva: [],
+        reservaPlazasEmpleados: null,
+        destino: null
+    }    
     this.marked = false;
   }
 
@@ -57,13 +70,40 @@ export class ActividadFormComponent implements OnInit {
 
 
   guardar(f: NgForm) {
-    console.log(f);
-    console.log(this.actividad.fecha);
-    this.actividadesService.crearActividad(this.actividad);
+    console.log(this.actividadExterna);
+    console.log(this.actividad);
+    if(this.marked){
+      this.pasoLocalExterna();
+      this.actividadesService.crearActividad(this.actividadExterna);
+    }else{
+      this.actividadesService.crearActividad(this.actividad);
+    }
+    this.router.navigate(["/actividades/listado"]);
+  }
+
+  comprobarExterna(){
+    return this.marked;
+  }
+
+  pasoLocalExterna(){
+    this.actividadExterna.nombre = this.actividad.nombre;
+    this.actividadExterna.fecha = this.actividad.fecha;
+    this.actividadExterna.numeroPlazas = this.actividad.numeroPlazas;
+    this.actividadExterna.precio = this.actividad.precio;
+    this.actividadExterna.reservaPlazasEmpleados = this.actividad.reservaPlazasEmpleados;
   }
 
   toggleVisibility(e){
     this.marked= e.target.checked;
+  }
+
+  cancelar(f: NgForm){
+    if (f.dirty){
+    if(confirm("Las modificaciones se perderán. ¿Está seguro?")==false){
+      return;
+      }
+    }
+    this.router.navigate(["/actividades"]);
   }
 
 }
