@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RepositoryRestResource(path = "local-activities", itemResourceRel = "local-activity", collectionResourceRel = "local-activities")
+@RepositoryRestResource(path = "locales", itemResourceRel = "local", collectionResourceRel = "locales")
 public interface ActividadLocalDAO extends JpaRepository<ActividadLocal, String> {
 
 }

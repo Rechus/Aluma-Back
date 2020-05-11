@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RepositoryRestResource(path = "bookings", itemResourceRel = "booking", collectionResourceRel = "bookings")
+@RepositoryRestResource(path = "reservas", itemResourceRel = "reserva", collectionResourceRel = "reservas")
 public interface ReservaDAO extends JpaRepository<Reserva, Integer> {
 
 }

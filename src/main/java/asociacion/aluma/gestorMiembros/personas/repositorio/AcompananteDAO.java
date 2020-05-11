@@ -8,7 +8,7 @@ import asociacion.aluma.gestorMiembros.personas.Acompanante;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RepositoryRestResource(path = "companions", itemResourceRel = "companion", collectionResourceRel = "companions")
+@RepositoryRestResource(path = "acompanantes", itemResourceRel = "acompanante", collectionResourceRel = "acompanantes")
 public interface AcompananteDAO extends JpaRepository<Acompanante, String> {
 
 }

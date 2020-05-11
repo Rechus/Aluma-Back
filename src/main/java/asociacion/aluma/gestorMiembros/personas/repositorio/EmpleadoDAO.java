@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import asociacion.aluma.gestorMiembros.personas.Empleado;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RepositoryRestResource(path = "members", itemResourceRel = "member", collectionResourceRel = "members")
+@RepositoryRestResource(path = "miembros", itemResourceRel = "miembro", collectionResourceRel = "miembros")
 public interface EmpleadoDAO extends JpaRepository<Empleado, String> {
 
 }

@@ -20,8 +20,8 @@ export class ActividadesApiService extends ActividadesService {
   getActividades(): Observable<Actividad[]> {
 
     
-    return this.http.get("http://localhost:8080/api/local-activities").pipe(
-    map(respuesta => respuesta['_embedded'].actividades)
+    return this.http.get("http://localhost:8080/api/locales").pipe(
+    map(respuesta => respuesta['_embedded'].locales)
     )
 
   }

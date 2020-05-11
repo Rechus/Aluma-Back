@@ -7,6 +7,8 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
@@ -27,18 +29,25 @@ import asociacion.aluma.gestorMiembros.personas.Persona;
 public abstract class ActividadImp implements Actividad {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true)
+	private String id;
 	@Column(name = "NOMBRE_ACT")
 	private String nombre;
 	private Instant fecha;
 	private int numeroPlazas;
 	private double precio;
 	@ManyToMany
-	@JoinTable(name = "ACTIV_PART", joinColumns = @JoinColumn(name = "ACT_NOMB", referencedColumnName = "NOMBRE_ACT"), inverseJoinColumns = @JoinColumn(name = "PART_DNI", referencedColumnName = "PERS_DNI"))
+	@JoinTable(name = "ACTIV_PART", joinColumns = @JoinColumn(name = "ACT_ID", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "PART_DNI", referencedColumnName = "PERS_DNI"))
 	private Collection<Persona> listaParticipantes;
 	@OneToMany(targetEntity = Reserva.class, cascade = CascadeType.ALL, mappedBy = "actividad")
 	private Collection<Reserva> listaReservas;
 	private int reservaPlazasEmpleados;
 
+	public String getId() {
+		return id;
+	}
+		
 	public String getNombre() {
 		return nombre;
 	}
