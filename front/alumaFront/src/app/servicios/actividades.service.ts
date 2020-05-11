@@ -1,8 +1,12 @@
-import { Actividad } from './../modelo/actividad';
+import { Externa } from './../modelo/Externa';
+
 import { Observable } from 'rxjs';
+import { Actividades } from '../modelo/Actividades';
+import { Local } from '../modelo/Local';
 export abstract class ActividadesService{
 
-    abstract getActividades(): Observable<Actividad[]> ;
+    abstract getActividadesLocales(): Observable<Local[]>;
+    abstract getActividadesExternas(): Observable<Externa[]>;
     
     abstract getActividadesConNombre(filtro);
 

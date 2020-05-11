@@ -1,5 +1,4 @@
-import { Actividad } from './actividad';
-export interface ActividadExterna {
+export interface Local{
     nombre: string;
     fecha: Date;
     numeroPlazas: number;
@@ -7,5 +6,4 @@ export interface ActividadExterna {
     listaParticipantes: object[];
     listaReserva: object[];
     reservaPlazasEmpleados: number;
-    destino: string;
 }

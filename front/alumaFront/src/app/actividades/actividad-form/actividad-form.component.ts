@@ -1,9 +1,10 @@
-import { ActividadExterna } from './../../modelo/actividadExterna';
-import { Actividad } from './../../modelo/actividad';
+
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Local } from 'src/app/modelo/Local';
+import { Externa } from 'src/app/modelo/Externa';
 
 
 @Component({
@@ -13,8 +14,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ActividadFormComponent implements OnInit {
 
-  actividad: Actividad;
-  actividadExterna: ActividadExterna;
+  actividad: Local;
+  actividadExterna: Externa;
   marked;
   theCheckbox = false;
   dateNow : Date = new Date();
@@ -28,7 +29,7 @@ export class ActividadFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let nombre = this.ruta.snapshot.paramMap.get("noombre");
+    let nombre = this.ruta.snapshot.paramMap.get("nombre");
 
     if(nombre){
       this.actividad = this.actividadesService.getActividadesConNombre(nombre);

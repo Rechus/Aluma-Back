@@ -7,19 +7,19 @@
             <input #buscar matInput placeholder="Buscar..." (keyup)="filtrar(buscar.value)" class="form-control">
         </div>
 
-        <div class="text-danger" id="error" *ngIf="buscar.value!= '' && actividadesLista.length == 0">
+        <div class="text-danger" id="error" *ngIf="buscar.value!= '' && actividadesListaLocales.length == 0 && actividadesListaExternas.length == 0 ">
             No se han encontrado actividades con el valor '{{ buscar.value }}'
         </div>
       
-        <div *ngIf="actividadesLista.length > 0" class="mt-5" id="mostrando">
-            Mostrando 1-{{ actividadesLista.length }} de {{ actividadesLista.length }} actividades
+        <div *ngIf="actividadesListaLocales.length && actividadesListaExternas.length > 0" class="mt-5" id="mostrando">
+            Mostrando 1 - X de X actividades
             <i class="fas fa-chevron-left"></i>
             <i class="fas fa-chevron-right"></i>
         </div>
 
         <div id="listaActividades" class="ml-n5 mt-2">
             <ul>
-                <li *ngFor="let actividad of actividadesLista" [class.actividadPasada]="esPasado(actividad)">
+                <li *ngFor="let actividad of actividadesListaLocales" [class.actividadPasada]="esPasado(actividad)">
                     <i class="fas fa-calendar-day"></i>
                     
                         <span class="fechaActividad">
@@ -31,6 +31,22 @@
                                     {{ actividad.nombre }} 
                                     </a>
                                 </span>
+                                <span>Local</span>
+                            
+                </li>
+                <li *ngFor="let actividad of actividadesListaExternas" [class.actividadPasada]="esPasado(actividad)">
+                    <i class="fas fa-calendar-day"></i>
+                    
+                        <span class="fechaActividad">
+                                {{ actividad.fecha | date:'d/M/yyyy' }} 
+                            </span>
+                            
+                                 <span class="nombreActividad">
+                                    <a routerLink="detalle">
+                                    {{ actividad.nombre }} 
+                                    </a>
+                                </span>
+                                <span>Externa</span>
                             
                 </li>
             </ul>

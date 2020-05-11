@@ -1,7 +1,9 @@
-import { Actividad } from './../../modelo/actividad';
+import { Actividades } from './../../modelo/Actividades';
 import { Component, OnInit } from '@angular/core';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { fileURLToPath } from 'url';
+import { Local } from 'src/app/modelo/Local';
+import { Externa } from 'src/app/modelo/Externa';
 
 @Component({
   selector: 'app-actividades-lista',
@@ -10,16 +12,23 @@ import { fileURLToPath } from 'url';
 })
 export class ActividadesListaComponent implements OnInit {
 
-  actividadesLista: Actividad[];
+  actividadesListaLocales: Local[];
+  actividadesListaExternas: Externa[];
+  
 
   constructor(private actividadesService: ActividadesService) { 
   }
 
   ngOnInit(): void {
-    this.actividadesService.getActividades().subscribe(
-      respuesta => (this.actividadesLista = respuesta)
+    this.actividadesService.getActividadesLocales().subscribe(
+      respuesta => (this.actividadesListaLocales = respuesta)
+    )
+    this.actividadesService.getActividadesExternas().subscribe(
+      respuesta => (this.actividadesListaExternas = respuesta)
     )
   }
+
+  
 
   esPasado(actividad){
     let fechaActividad = new Date(actividad.fecha);
@@ -28,11 +37,11 @@ export class ActividadesListaComponent implements OnInit {
 
   filtrar(filtro){
     if (!filtro || filtro.trim().lenght == 0 ){
-      this.actividadesService.getActividades().subscribe(
-        respuesta => this.actividadesLista = respuesta['_embedded'].actividades
+      this.actividadesService.getActividadesLocales().subscribe(
+        respuesta => this.actividadesListaLocales = respuesta['_embedded'].locales
       )
     }else{
-      this.actividadesLista = this.actividadesService.getActividadesConNombre(filtro);
+      this.actividadesListaLocales = this.actividadesService.getActividadesConNombre(filtro);
     }
   }
 

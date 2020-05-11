@@ -1,4 +1,5 @@
-export interface Actividad{
+
+export interface Externa {
     nombre: string;
     fecha: Date;
     numeroPlazas: number;
@@ -6,4 +7,5 @@ export interface Actividad{
     listaParticipantes: object[];
     listaReserva: object[];
     reservaPlazasEmpleados: number;
+    destino: string;
 }

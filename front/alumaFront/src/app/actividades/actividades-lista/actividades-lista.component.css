@@ -50,3 +50,7 @@ h5{
 .actividadPasada>* {
     color: gray;
 }
+
+.fechaActividad{
+    padding-top: 5%;
+}
