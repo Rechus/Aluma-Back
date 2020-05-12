@@ -18,7 +18,7 @@ h5{
 
 #mostrando{
 
-    padding-left: 18%;
+    padding-left: 18%;;
 }
 
 #listaActividades {
@@ -30,6 +30,7 @@ h5{
     position: relative;
     height: 60px;
     padding-left: 18%;
+    padding-top: 1%;
 }
 
 #listaActividades mat-icon {

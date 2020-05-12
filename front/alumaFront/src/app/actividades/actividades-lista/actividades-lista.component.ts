@@ -12,9 +12,8 @@ import { Externa } from 'src/app/modelo/Externa';
 })
 export class ActividadesListaComponent implements OnInit {
 
-  actividadesListaLocales: Local[];
-  actividadesListaExternas: Externa[];
-  
+  actividadesListaLocales: Local[] = [];
+  actividadesListaExternas: Externa[] = [];
 
   constructor(private actividadesService: ActividadesService) { 
   }
@@ -38,10 +37,13 @@ export class ActividadesListaComponent implements OnInit {
   filtrar(filtro){
     if (!filtro || filtro.trim().lenght == 0 ){
       this.actividadesService.getActividadesLocales().subscribe(
-        respuesta => this.actividadesListaLocales = respuesta['_embedded'].locales
+        respuesta => this.actividadesListaLocales = respuesta
+      )
+      this.actividadesService.getActividadesExternas().subscribe(
+        respuesta => (this.actividadesListaExternas = respuesta)
       )
     }else{
-      this.actividadesListaLocales = this.actividadesService.getActividadesConNombre(filtro);
+     // this.actividadesListaLocales = this.actividadesService.getActividadesConNombre(filtro);
     }
   }
 

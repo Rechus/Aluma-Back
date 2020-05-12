@@ -12,7 +12,7 @@
         </div>
       
         <div *ngIf="actividadesListaLocales.length && actividadesListaExternas.length > 0" class="mt-5" id="mostrando">
-            Mostrando 1 - X de X actividades
+            Mostrando 1 - {{ actividadesListaLocales.length + actividadesListaExternas.length  }} de {{ actividadesListaLocales.length + actividadesListaExternas.length  }} actividades
             <i class="fas fa-chevron-left"></i>
             <i class="fas fa-chevron-right"></i>
         </div>
