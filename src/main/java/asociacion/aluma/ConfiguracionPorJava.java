@@ -1,8 +1,14 @@
 package asociacion.aluma;
 
+
+
 //import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+
+
+
+
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -17,5 +23,6 @@ public class ConfiguracionPorJava {
 //		
 //		return mapper;
 //	}
+	
 
 }
