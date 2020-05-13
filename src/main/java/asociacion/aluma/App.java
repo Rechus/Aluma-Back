@@ -3,7 +3,7 @@
  */
 package asociacion.aluma;
 
-import java.time.Instant;
+//import java.time.Instant;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,20 +12,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
-import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
-import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
-import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadExternaDAO;
-import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadLocalDAO;
-import asociacion.aluma.gestorActividades.actividades.transporte.Autobus;
-import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
-import asociacion.aluma.gestorMiembros.personas.Acompanante;
-import asociacion.aluma.gestorMiembros.personas.Empleado;
-import asociacion.aluma.gestorMiembros.personas.Persona;
-import asociacion.aluma.gestorMiembros.personas.Socio;
-import asociacion.aluma.gestorMiembros.personas.repositorio.AcompananteDAO;
-import asociacion.aluma.gestorMiembros.personas.repositorio.EmpleadoDAO;
-import asociacion.aluma.gestorMiembros.personas.repositorio.PersonaDAO;
-import asociacion.aluma.gestorMiembros.personas.repositorio.SocioDAO;
+//import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
+//import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
+//import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadExternaDAO;
+//import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadLocalDAO;
+//import asociacion.aluma.gestorActividades.actividades.transporte.Autobus;
+//import asociacion.aluma.gestorActividades.actividades.transporte.Transporte;
+//import asociacion.aluma.gestorMiembros.personas.Acompanante;
+//import asociacion.aluma.gestorMiembros.personas.Empleado;
+//import asociacion.aluma.gestorMiembros.personas.Persona;
+//import asociacion.aluma.gestorMiembros.personas.Socio;
+//import asociacion.aluma.gestorMiembros.personas.repositorio.AcompananteDAO;
+//import asociacion.aluma.gestorMiembros.personas.repositorio.EmpleadoDAO;
+//import asociacion.aluma.gestorMiembros.personas.repositorio.PersonaDAO;
+//import asociacion.aluma.gestorMiembros.personas.repositorio.SocioDAO;
 
 @SpringBootApplication
 @ImportResource({ "classpath:config/jpa-config.xml" })

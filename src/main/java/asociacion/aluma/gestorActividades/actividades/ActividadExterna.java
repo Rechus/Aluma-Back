@@ -43,5 +43,4 @@ public class ActividadExterna extends ActividadImp {
 		return "ActividadExterna [destino=" + destino + ", transporte=" + transporte + ", toString()="
 				+ super.toString() + "]";
 	}
-
 }

@@ -11,5 +11,4 @@ import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
 @RepositoryRestResource(path = "locales", itemResourceRel = "local", collectionResourceRel = "locales")
 public interface ActividadLocalDAO extends JpaRepository<ActividadLocal, String> {
 
-	
 }

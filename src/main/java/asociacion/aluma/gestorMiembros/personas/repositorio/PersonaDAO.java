@@ -10,6 +10,4 @@ import asociacion.aluma.gestorMiembros.personas.Persona;
 @RepositoryRestResource(path = "personas", itemResourceRel = "persona", collectionResourceRel = "personas")
 public interface PersonaDAO extends JpaRepository<Persona, String> {
 
-	
-
 }

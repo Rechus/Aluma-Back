@@ -23,5 +23,4 @@ public class ActividadLocal extends ActividadImp {
 				+ getNumeroPlazas() + ", getNumeroPlazasNoEmp()=" + getNumeroPlazasNoEmp() + ", getPrecio()="
 				+ getPrecio() + ", getReservaPlazasEmpleados()=" + getReservaPlazasEmpleados() + "]";
 	}
-
 }

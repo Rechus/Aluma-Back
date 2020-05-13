@@ -18,5 +18,4 @@ public interface ActividadExternaDAO extends JpaRepository<ActividadExterna, Str
 	
 	@RestResource(path="destino")
 	List<ActividadExterna> findByDestinoIgnoreCaseContaining(@Param("destino") String destino);
-
 }
