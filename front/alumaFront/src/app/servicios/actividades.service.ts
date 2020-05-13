@@ -8,7 +8,8 @@ export abstract class ActividadesService{
     abstract getActividadesLocales(): Observable<Local[]>;
     abstract getActividadesExternas(): Observable<Externa[]>;
     
-    abstract getActividadesConNombre(filtro);
+    abstract getActividadesConNombreExterna(filtro);
+    abstract getActividadesConNombreLocal(filtro);
 
     abstract crearActividad(actividad);
 

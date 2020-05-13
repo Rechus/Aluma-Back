@@ -27,26 +27,28 @@ export class ActividadesListaComponent implements OnInit {
     )
   }
 
-  
-
   esPasado(actividad){
     let fechaActividad = new Date(actividad.fecha);
     return fechaActividad < new Date();
   }
 
-  filtrar(filtro){
+  filtrar(filtro?){
     if (!filtro || filtro.trim().lenght == 0 ){
       this.actividadesService.getActividadesLocales().subscribe(
         respuesta => this.actividadesListaLocales = respuesta
       )
       this.actividadesService.getActividadesExternas().subscribe(
-        respuesta => (this.actividadesListaExternas = respuesta)
+        respuesta => this.actividadesListaExternas = respuesta
       )
     }else{
-     // this.actividadesListaLocales = this.actividadesService.getActividadesConNombre(filtro);
+      this.actividadesService.getActividadesConNombreLocal(filtro).subscribe(
+        respuesta  =>  (respuesta == null) ? this.actividadesListaLocales = []
+        : this.actividadesListaLocales = respuesta
+      ) ;
+      this.actividadesService.getActividadesConNombreExterna(filtro).subscribe(
+        respuesta  =>  (respuesta == null) ? this.actividadesListaExternas = []
+        : this.actividadesListaExternas = respuesta
+      ) ;
     }
   }
-
- 
-
 }

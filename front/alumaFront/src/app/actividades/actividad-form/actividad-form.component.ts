@@ -29,10 +29,11 @@ export class ActividadFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let nombre = this.ruta.snapshot.paramMap.get("nombre");
+    let id = this.ruta.snapshot.paramMap.get("id");
 
-    if(nombre){
-      this.actividad = this.actividadesService.getActividadesConNombre(nombre);
+    if(id){
+      // nota para futuro, implementar esta función
+      this.actividad = this.actividadesService.getActividadesConNombreLocal(id);
     }else{
 
     this.actividad = {
