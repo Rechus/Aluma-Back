@@ -16,7 +16,8 @@ export abstract class ActividadesService{
     abstract getActividadLocalPorId(id: any): Observable<Local>;
     abstract getActividadExternaPorId(id: any): Observable<Externa>;
 
-    abstract crearActividad(actividad);
+    abstract crearActividadLocal(actividad: Local);
+    abstract crearActividadExterna(actividad: Externa);
 
     abstract modificarActividad(id, actividad);
 

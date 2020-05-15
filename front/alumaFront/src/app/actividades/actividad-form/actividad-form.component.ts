@@ -22,8 +22,9 @@ export class ActividadFormComponent implements OnInit {
   dateNow : Date = new Date();
   hoy : String = this.formateoFecha(this.dateNow);
   titulo: string;
-  fechaSinVisual: Date;
-  fechaVisual: String;
+  campoFecha;
+
+
   
   constructor(private actividadesService: ActividadesService,
      private router: Router, 
@@ -37,7 +38,6 @@ export class ActividadFormComponent implements OnInit {
     let id = this.ruta.snapshot.paramMap.get('id');
     this.inicializarLocal();
     this.inicializarExterna();
-    this.fechaVisual = "";
     
     if(id){
       this.actividadesService.getActividadLocalPorId(id).subscribe(
@@ -45,9 +45,7 @@ export class ActividadFormComponent implements OnInit {
           if(respuesta){
             this.titulo = "Editar actividad";
             this.actividad = respuesta[0];
-            this.fechaSinVisual = new Date(this.actividad.fecha);
-            this.fechaVisual = this.formateoFecha(this.fechaSinVisual);
-            console.log(this.fechaVisual);
+            this.campoFecha = this.formateoFecha(this.actividad.fecha);
           }else{
             this.actividadesService.getActividadExternaPorId(id).subscribe(
               (respuesta2: any) =>{
@@ -56,9 +54,7 @@ export class ActividadFormComponent implements OnInit {
                   this.marked = true;
                   this.actividadExterna = respuesta2[0];
                   this.pasoExternaLocal();
-                  this.fechaSinVisual = new Date(this.actividad.fecha);
-                  this.fechaVisual = this.formateoFecha(this.fechaSinVisual);
-                  console.log(this.fechaVisual);
+                  this.campoFecha = this.formateoFecha(this.actividad.fecha);
                 }else{
                   this.router.navigate(["/actividades/form"]);
                 }
@@ -75,27 +71,25 @@ export class ActividadFormComponent implements OnInit {
 
    formateoFecha(fecha: Date){
     var cadena = "";
-    var ano = fecha.getFullYear();
+    var fecha1 = new Date(fecha);
+    var ano = fecha1.getFullYear();
     var mes;
-     if (fecha.getMonth() < 10){
-       mes = "0"+(fecha.getMonth()+1);
+     if (fecha1.getMonth() < 10){
+       mes = "0"+(fecha1.getMonth()+1);
      }else{
-       mes = (fecha.getMonth()+1);
+       mes = (fecha1.getMonth()+1);
      }
     var dia;
-    if (fecha.getDate() < 10){
-     dia = "0"+fecha.getDate();
+    if (fecha1.getDate() < 10){
+     dia = "0"+fecha1.getDate();
    }else{
-     dia = fecha.getDate();
+     dia = fecha1.getDate();
    }
    cadena = ano+"-"+mes+"-"+dia;
    return cadena;
    }
 
-
   guardar(f: NgForm) {
-    console.log(this.actividadExterna);
-    console.log(this.actividad);
     let id = this.ruta.snapshot.paramMap.get('id');
     if(id) {
       if(this.marked){
@@ -105,12 +99,17 @@ export class ActividadFormComponent implements OnInit {
        }
     }else{
     if(this.marked){
+      this.actividad.fecha = new Date(this.campoFecha);
       this.pasoLocalExterna();
-      this.actividadesService.crearActividad(this.actividadExterna);
+      this.actividadesService.crearActividadExterna(this.actividadExterna).subscribe(
+        () => this.router.navigate(["/actividades/listado"])
+      )
     }else{
-      this.actividadesService.crearActividad(this.actividad);
+      this.actividad.fecha = new Date(this.campoFecha);
+      this.actividadesService.crearActividadLocal(this.actividad).subscribe(
+        () => this.router.navigate(["/actividades/listado"])
+      )
     }
-    this.router.navigate(["/actividades/listado"]);
   }
 }
 

@@ -10,6 +10,8 @@ import { Externa } from '../modelo/Externa';
 
 const url_base = "http://localhost:8080/api";
 const url_base_actividades = "http://localhost:8080/api/actividades";
+const url_base_locales = "http://localhost:8080/api/locales";
+const url_base_externas = "http://localhost:8080/api/externas";
 
 @Injectable({
   providedIn: 'root'
@@ -66,8 +68,12 @@ export class ActividadesApiService extends ActividadesService {
     )
   }
 
-  crearActividad(actividad: any) {
-    throw new Error("Method not implemented.");
+  crearActividadLocal(actividad: Local) {
+    return this.http.post(url_base_locales, actividad);
+  }
+
+  crearActividadExterna(actividad: Externa) {
+    return this.http.post(url_base_externas, actividad);
   }
 
   modificarActividad(id: any, actividad: any) {
