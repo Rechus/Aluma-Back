@@ -93,9 +93,13 @@ export class ActividadFormComponent implements OnInit {
     let id = this.ruta.snapshot.paramMap.get('id');
     if(id) {
       if(this.marked){
-        this.actividadesService.modificarActividad(id, this.actividadExterna);
+        this.actividadesService.modificarActividadExterna(id, this.actividadExterna).subscribe(
+          () => this.router.navigate(["/actividades/listado"])
+        );
         }else{
-          this.actividadesService.modificarActividad(id, this.actividad);
+          this.actividadesService.modificarActividadLocal(id, this.actividad).subscribe(
+            () => this.router.navigate(["/actividades/listado"])
+          );
        }
     }else{
     if(this.marked){

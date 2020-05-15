@@ -76,7 +76,12 @@ export class ActividadesApiService extends ActividadesService {
     return this.http.post(url_base_externas, actividad);
   }
 
-  modificarActividad(id: any, actividad: any) {
-    throw new Error("Method not implemented.");
+  modificarActividadLocal(id: any, actividad: Local) {
+    return this.http.patch(`${url_base_locales}/${id}`, actividad );
   }
+
+  modificarActividadExterna(id: any, actividad: Externa) {
+    return this.http.patch(`${url_base_externas}/${id}`, actividad );
+  }
+
 }

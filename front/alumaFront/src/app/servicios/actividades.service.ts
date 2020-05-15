@@ -1,3 +1,4 @@
+
 import { Externa } from './../modelo/Externa';
 
 import { Observable } from 'rxjs';
@@ -19,7 +20,8 @@ export abstract class ActividadesService{
     abstract crearActividadLocal(actividad: Local);
     abstract crearActividadExterna(actividad: Externa);
 
-    abstract modificarActividad(id, actividad);
+    abstract modificarActividadLocal(id, actividad: Local);
+    abstract modificarActividadExterna(id, actividad: Externa);
 
 
 }
