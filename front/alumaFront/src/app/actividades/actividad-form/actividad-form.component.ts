@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Local } from 'src/app/modelo/Local';
 import { Externa } from 'src/app/modelo/Externa';
+import { Actividades } from 'src/app/modelo/Actividades';
 
 
 @Component({
@@ -19,7 +20,10 @@ export class ActividadFormComponent implements OnInit {
   marked;
   theCheckbox = false;
   dateNow : Date = new Date();
-  hoy : String = this.formateoFecha();
+  hoy : String = this.formateoFecha(this.dateNow);
+  titulo: string;
+  fechaSinVisual: Date;
+  fechaVisual: String;
   
   constructor(private actividadesService: ActividadesService,
      private router: Router, 
@@ -29,13 +33,92 @@ export class ActividadFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    let id = this.ruta.snapshot.paramMap.get("id");
 
+    let id = this.ruta.snapshot.paramMap.get('id');
+    this.inicializarLocal();
+    this.inicializarExterna();
+    this.fechaVisual = "";
+    
     if(id){
-      // nota para futuro, implementar esta función
-      this.actividad = this.actividadesService.getActividadesConNombreLocal(id);
-    }else{
+      this.actividadesService.getActividadLocalPorId(id).subscribe(
+        (respuesta: Local) =>{
+          if(respuesta){
+            this.titulo = "Editar actividad";
+            this.actividad = respuesta[0];
+            this.fechaSinVisual = new Date(this.actividad.fecha);
+            this.fechaVisual = this.formateoFecha(this.fechaSinVisual);
+            console.log(this.fechaVisual);
+          }else{
+            this.actividadesService.getActividadExternaPorId(id).subscribe(
+              (respuesta2: any) =>{
+                if(respuesta2){
+                  this.titulo = "Editar actividad";
+                  this.marked = true;
+                  this.actividadExterna = respuesta2[0];
+                  this.pasoExternaLocal();
+                  this.fechaSinVisual = new Date(this.actividad.fecha);
+                  this.fechaVisual = this.formateoFecha(this.fechaSinVisual);
+                  console.log(this.fechaVisual);
+                }else{
+                  this.router.navigate(["/actividades/form"]);
+                }
+              }
+            )
+          }
+        }
+      )
+    } else {
+      this.titulo = "Nueva actividad";
+      this.marked = false;
+    }
+  }
 
+   formateoFecha(fecha: Date){
+    var cadena = "";
+    var ano = fecha.getFullYear();
+    var mes;
+     if (fecha.getMonth() < 10){
+       mes = "0"+(fecha.getMonth()+1);
+     }else{
+       mes = (fecha.getMonth()+1);
+     }
+    var dia;
+    if (fecha.getDate() < 10){
+     dia = "0"+fecha.getDate();
+   }else{
+     dia = fecha.getDate();
+   }
+   cadena = ano+"-"+mes+"-"+dia;
+   return cadena;
+   }
+
+
+  guardar(f: NgForm) {
+    console.log(this.actividadExterna);
+    console.log(this.actividad);
+    let id = this.ruta.snapshot.paramMap.get('id');
+    if(id) {
+      if(this.marked){
+        this.actividadesService.modificarActividad(id, this.actividadExterna);
+        }else{
+          this.actividadesService.modificarActividad(id, this.actividad);
+       }
+    }else{
+    if(this.marked){
+      this.pasoLocalExterna();
+      this.actividadesService.crearActividad(this.actividadExterna);
+    }else{
+      this.actividadesService.crearActividad(this.actividad);
+    }
+    this.router.navigate(["/actividades/listado"]);
+  }
+}
+
+  comprobarExterna(){
+    return this.marked;
+  }
+
+  inicializarLocal(){
     this.actividad = {
       nombre: null,
       fecha: null,
@@ -45,55 +128,19 @@ export class ActividadFormComponent implements OnInit {
       listaReserva: [],
       reservaPlazasEmpleados: null,
     }
+  }
+
+  inicializarExterna(){
     this.actividadExterna = {
-
-        nombre: null,
-        fecha: null,
-        numeroPlazas: null,
-        precio: null,
-        listaParticipantes: [],
-        listaReserva: [],
-        reservaPlazasEmpleados: null,
-        destino: null
-    }    
-    this.marked = false;
-  }
-  }
-
-
-  formateoFecha(){
-    var cadena = "";
-    var ano = this.dateNow.getFullYear();
-    var mes;
-     if (this.dateNow.getMonth() < 10){
-       mes = "0"+(this.dateNow.getMonth()+1);
-     }else{
-       mes = (this.dateNow.getMonth()+1);
-     }
-    var dia;
-    if (this.dateNow.getDate() < 10){
-     dia = "0"+this.dateNow.getDate();
-   }else{
-     dia = this.dateNow.getDate();
-   }
-   cadena = ano+"-"+mes+"-"+dia;
-   return cadena;
-   }
-
-  guardar(f: NgForm) {
-    console.log(this.actividadExterna);
-    console.log(this.actividad);
-    if(this.marked){
-      this.pasoLocalExterna();
-      this.actividadesService.crearActividad(this.actividadExterna);
-    }else{
-      this.actividadesService.crearActividad(this.actividad);
-    }
-    this.router.navigate(["/actividades/listado"]);
-  }
-
-  comprobarExterna(){
-    return this.marked;
+      nombre: null,
+      fecha: null,
+      numeroPlazas: null,
+      precio: null,
+      listaParticipantes: [],
+      listaReserva: [],
+      reservaPlazasEmpleados: null,
+      destino: null
+    } 
   }
 
   pasoLocalExterna(){
@@ -102,6 +149,14 @@ export class ActividadFormComponent implements OnInit {
     this.actividadExterna.numeroPlazas = this.actividad.numeroPlazas;
     this.actividadExterna.precio = this.actividad.precio;
     this.actividadExterna.reservaPlazasEmpleados = this.actividad.reservaPlazasEmpleados;
+  }
+
+  pasoExternaLocal(){
+    this.actividad.nombre = this.actividadExterna.nombre;
+    this.actividad.fecha = this.actividadExterna.fecha;
+    this.actividad.numeroPlazas = this.actividadExterna.numeroPlazas;
+    this.actividad.precio = this.actividadExterna.precio;
+    this.actividad.reservaPlazasEmpleados = this.actividadExterna.reservaPlazasEmpleados;
   }
 
   toggleVisibility(e){
@@ -116,7 +171,6 @@ export class ActividadFormComponent implements OnInit {
     }
     this.router.navigate(["/actividades"]);
   }
-
 }
 
 

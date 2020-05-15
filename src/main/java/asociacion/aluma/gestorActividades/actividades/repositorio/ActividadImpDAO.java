@@ -25,4 +25,7 @@ public interface ActividadImpDAO extends JpaRepository<ActividadImp, String> {
 	
 	@RestResource(path="fecha-comienzo")
 	List<ActividadImp> findByFechaAfter(@Param("comienzo")Instant comienzo);
+	
+	@RestResource(path="id")
+	List<ActividadImp> findByid(@Param("id")String id);
 }  
