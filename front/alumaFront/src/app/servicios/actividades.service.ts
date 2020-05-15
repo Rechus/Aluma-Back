@@ -23,5 +23,8 @@ export abstract class ActividadesService{
     abstract modificarActividadLocal(id, actividad: Local);
     abstract modificarActividadExterna(id, actividad: Externa);
 
+    // abstract getParticipantesActividadLocal(id);
+    
+
 
 }

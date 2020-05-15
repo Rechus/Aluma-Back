@@ -59,9 +59,7 @@ export class ActividadesApiService extends ActividadesService {
       map(respuesta => respuesta['_embedded'].locales)
     )
   }
-
   
-
   getActividadExternaPorId(id: any): Observable<Externa>{
     return this.http.get(`${url_base_actividades}/search/id?id=${id}`).pipe(
       map(respuesta => respuesta['_embedded'].externas)
