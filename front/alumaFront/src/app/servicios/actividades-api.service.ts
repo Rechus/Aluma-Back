@@ -17,6 +17,7 @@ const url_base_externas = "http://localhost:8080/api/externas";
   providedIn: 'root'
 })
 export class ActividadesApiService extends ActividadesService {
+
  
  
 
@@ -80,6 +81,15 @@ export class ActividadesApiService extends ActividadesService {
 
   modificarActividadExterna(id: any, actividad: Externa) {
     return this.http.patch(`${url_base_externas}/${id}`, actividad );
+  }
+
+  getParticipantesActividadLocal(id: any) {
+    return this.http.get(`${url_base_locales}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'])
+    )
+  }
+  getParticipantesActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaParticipantes`)
   }
 
 }

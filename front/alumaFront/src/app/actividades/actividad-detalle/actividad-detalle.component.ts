@@ -1,3 +1,5 @@
+import { Participantes } from './../../modelo/Participantes';
+import { ServiciosModule } from './../../servicios/servicios.module';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { Component, OnInit } from '@angular/core';
 import { Externa } from 'src/app/modelo/Externa';
@@ -10,21 +12,23 @@ import { Local } from 'src/app/modelo/Local';
 })
 export class ActividadDetalleComponent implements OnInit {
 
-  idActividad = 0;
+  idActividad = 1;
   detalle;
   local: Local;
   externa: Externa;
+  listaParticipantes: [];
+  numeroParticipantes: number;
 
   constructor(private actividadesService:  ActividadesService) { }
 
   ngOnInit(): void {
-
+    this.numeroParticipantes = 0;
+    this.listaParticipantes = null;
     this.detalle = {
         nombre: null,
         fecha: null,
         numeroPlazas: null,
         precio: null,
-        listaParticipantes: [],
         listaReserva: [],
         reservaPlazasEmpleados: null,
         destino: null
@@ -35,6 +39,12 @@ export class ActividadDetalleComponent implements OnInit {
         if(respuesta){
           this.local = respuesta[0];
           this.localADetalle();
+          this.actividadesService.getParticipantesActividadLocal(this.idActividad).subscribe(
+            (respuesta2) => {
+              this.listaParticipantes = respuesta2;
+            }
+          )
+          console.log(this.listaParticipantes);
         }else{
           this.actividadesService.getActividadExternaPorId(this.idActividad).subscribe(
             (respuesta2: any) =>{
@@ -56,8 +66,7 @@ export class ActividadDetalleComponent implements OnInit {
     this.detalle.fecha = this.local.fecha;
     this.detalle.numeroPlazas = this.local.numeroPlazas;
     this.detalle.precio = this.local.precio;
-    this.detalle.listaParticipantes = this.local.listaParticipantes;
-    this.detalle.listaReserva = this.local.listaReserva;
+    this.detalle.reservaPlazasEmpleados = this.local.reservaPlazasEmpleados;
     this.detalle.destino = "Actividad Local";
   }
 
@@ -66,8 +75,7 @@ export class ActividadDetalleComponent implements OnInit {
     this.detalle.fecha = this.externa.fecha;
     this.detalle.numeroPlazas = this.externa.numeroPlazas;
     this.detalle.precio = this.externa.precio;
-    this.detalle.listaParticipantes = this.externa.listaParticipantes;
-    this.detalle.listaReserva = this.externa.listaReserva;
+    this.detalle.reservaPlazasEmpleados = this.externa.reservaPlazasEmpleados;
     this.detalle.destino = this.externa.destino;
   }
 

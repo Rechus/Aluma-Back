@@ -1,5 +1,30 @@
-.fas fa-chevron-left{
-
-    transform: scale(1.3);
-
+section{
+    padding-left: 18%;
+    color: brown;
+    
 }
+
+#calendarioIco {
+    transform: scale(1.5);
+    color: burlywood;
+    padding-right: 2%;
+}
+
+h2{
+    color: brown;
+}
+
+#nombreIco {
+    transform: scale(1.5);
+    color: brown;
+    padding-right: 1%;
+}
+
+#dinero {
+    transform: scale(1.4);
+}
+
+#euro{
+    transform: scale(0.8);
+}
+
