@@ -1,7 +1,5 @@
-import { Actividades } from './../../modelo/Actividades';
 import { Component, OnInit } from '@angular/core';
 import { ActividadesService } from 'src/app/servicios/actividades.service';
-import { fileURLToPath } from 'url';
 import { Local } from 'src/app/modelo/Local';
 import { Externa } from 'src/app/modelo/Externa';
 

@@ -26,7 +26,11 @@ h1{
    
   }
   
-  .btn-white{
+  .btn-crear{
+    background: brown;
+    color:#000;
+  }
+  .btn-listado{
     background: brown;
     color:#000;
   }
@@ -60,9 +64,13 @@ h1{
     transition: all .5s;
   }
   
-  .btn-white::after {
+  .btn-crear::after {
       background: rgba(98, 243, 69, 0.2)
   }
+
+  .btn-listado::after {
+    background: rgba(57, 58, 57, 0.603)
+}
   
   .btn-animation-1:hover::after {
       transform: scaleX(1.4) scaleY(1.6);

@@ -18,9 +18,6 @@ const url_base_externas = "http://localhost:8080/api/externas";
 })
 export class ActividadesApiService extends ActividadesService {
 
- 
- 
-
   constructor(private http: HttpClient) { 
     super();
   }
@@ -83,13 +80,67 @@ export class ActividadesApiService extends ActividadesService {
     return this.http.patch(`${url_base_externas}/${id}`, actividad );
   }
 
-  getParticipantesActividadLocal(id: any) {
+  getSociosPorActividadLocal(id: any) {
     return this.http.get(`${url_base_locales}/${id}/listaParticipantes`).pipe(
-      map(respuesta => respuesta['_embedded'])
+      map(respuesta => respuesta['_embedded'].socios)
     )
   }
+  getPersonasPorActividadLocal(id: any) {
+    return this.http.get(`${url_base_locales}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].personas)
+    )
+  }
+  getMiembrosPorActividadLocal(id: any) {
+    return this.http.get(`${url_base_locales}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].miembros)
+    )
+  }
+
+  getAcompanantesPorActividadLocal(id: any) {
+    return this.http.get(`${url_base_locales}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].acompanantes)
+    )
+  }
+
+  getReservasPorActividadLocal(id:any) {
+    return this.http.get(`${url_base_locales}/${id}/listaReservas`).pipe(
+      map(respuesta => respuesta['_embedded'].reservas)
+    )
+  }
+
   getParticipantesActividadExterna(id: any) {
     return this.http.get(`${url_base_externas}/${id}/listaParticipantes`)
   }
 
+  getReservasPorActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaReservas`).pipe(
+      map(respuesta => respuesta['_embedded'].reservas)
+    )
+  }
+
+  getSociosPorActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].socios)
+    )
+  }
+  getPersonasPorActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].personas)
+    )
+  }
+  getMiembrosPorActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].miembros)
+    )
+  }
+  getAcompanantesPorActividadExterna(id: any) {
+    return this.http.get(`${url_base_externas}/${id}/listaParticipantes`).pipe(
+      map(respuesta => respuesta['_embedded'].acompanantes)
+    )
+  }
+
+  getIdActividad(actividad){
+    let href = actividad['_links'].self.href;
+    return href.slice(href.lastIndexOf('/')+1);
+  }
 }

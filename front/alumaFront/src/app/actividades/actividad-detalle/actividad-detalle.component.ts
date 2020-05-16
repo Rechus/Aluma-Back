@@ -18,6 +18,7 @@ export class ActividadDetalleComponent implements OnInit {
   externa: Externa;
   listaParticipantes: [];
   numeroParticipantes: number;
+  numeroReservas: number;
 
   constructor(private actividadesService:  ActividadesService) { }
 
@@ -29,7 +30,6 @@ export class ActividadDetalleComponent implements OnInit {
         fecha: null,
         numeroPlazas: null,
         precio: null,
-        listaReserva: [],
         reservaPlazasEmpleados: null,
         destino: null
     }
@@ -39,18 +39,87 @@ export class ActividadDetalleComponent implements OnInit {
         if(respuesta){
           this.local = respuesta[0];
           this.localADetalle();
-          this.actividadesService.getParticipantesActividadLocal(this.idActividad).subscribe(
+          this.actividadesService.getSociosPorActividadLocal(this.idActividad).subscribe(
             (respuesta2) => {
+              if(respuesta2){
               this.listaParticipantes = respuesta2;
+              this.numeroParticipantes = this.listaParticipantes.length;
+              }
             }
           )
-          console.log(this.listaParticipantes);
+          this.actividadesService.getMiembrosPorActividadLocal(this.idActividad).subscribe(
+            (respuesta2) => {
+              if(respuesta2){
+              this.listaParticipantes = respuesta2;
+              this.numeroParticipantes += this.listaParticipantes.length;
+              }
+            }
+          )
+          this.actividadesService.getPersonasPorActividadLocal(this.idActividad).subscribe(
+            (respuesta2) => {
+              if(respuesta2){
+              this.listaParticipantes = respuesta2;
+              this.numeroParticipantes += this.listaParticipantes.length;
+              }
+            }
+          )
+          this.actividadesService.getAcompanantesPorActividadLocal(this.idActividad).subscribe(
+            (respuesta2) => {
+              if(respuesta2){
+              this.listaParticipantes = respuesta2;
+              this.numeroParticipantes += this.listaParticipantes.length;
+              }
+            }
+          )
+          this.actividadesService.getReservasPorActividadLocal(this.idActividad).subscribe(
+            (respuesta2) => {
+              this.numeroReservas = respuesta2.length;
+            }
+          )
+          
         }else{
           this.actividadesService.getActividadExternaPorId(this.idActividad).subscribe(
-            (respuesta2: any) =>{
-              if(respuesta2){
-                this.externa = respuesta2[0];
+            (respuesta: Externa) =>{
+              if(respuesta){
+                this.externa = respuesta[0];
                 this.externaADetalle();
+                this.actividadesService.getSociosPorActividadExterna(this.idActividad).subscribe(
+                  (respuesta2) => {
+                    if(respuesta2){
+                    this.listaParticipantes = respuesta2;
+                    this.numeroParticipantes = this.listaParticipantes.length;
+                    }
+                  }
+                )
+                this.actividadesService.getMiembrosPorActividadExterna(this.idActividad).subscribe(
+                  (respuesta2) => {
+                    if(respuesta2){
+                    this.listaParticipantes = respuesta2;
+                    this.numeroParticipantes += this.listaParticipantes.length;
+                    }
+                  }
+                )
+                this.actividadesService.getPersonasPorActividadExterna(this.idActividad).subscribe(
+                  (respuesta2) => {
+                    if(respuesta2){
+                    this.listaParticipantes = respuesta2;
+                    this.numeroParticipantes += this.listaParticipantes.length;
+                    }
+                  }
+                )
+                this.actividadesService.getAcompanantesPorActividadExterna(this.idActividad).subscribe(
+                  (respuesta2) => {
+                    if(respuesta2){
+                    this.listaParticipantes = respuesta2;
+                    this.numeroParticipantes += this.listaParticipantes.length;
+                    }
+                  }
+                )
+                this.actividadesService.getReservasPorActividadExterna(this.idActividad).subscribe(
+                  (respuesta2) => {
+                    this.numeroReservas = respuesta2.length;
+                  }
+                )
               }else{
               // this.router.navigate(["/actividades/form"]);
               }
