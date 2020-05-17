@@ -19,8 +19,8 @@ export class ActividadFormComponent implements OnInit {
   actividadExterna: Externa;
   marked;
   theCheckbox = false;
-  dateNow : Date = new Date();
-  hoy : String = this.formateoFecha(this.dateNow);
+  dateNow : Date;
+  hoy : String;
   titulo: string;
   campoFecha;
 
@@ -46,6 +46,7 @@ export class ActividadFormComponent implements OnInit {
             this.titulo = "Editar actividad";
             this.actividad = respuesta[0];
             this.campoFecha = this.formateoFecha(this.actividad.fecha);
+            this.dateNow = new Date("01/01/1970");
           }else{
             this.actividadesService.getActividadExternaPorId(id).subscribe(
               (respuesta2: any) =>{
@@ -55,6 +56,7 @@ export class ActividadFormComponent implements OnInit {
                   this.actividadExterna = respuesta2[0];
                   this.pasoExternaLocal();
                   this.campoFecha = this.formateoFecha(this.actividad.fecha);
+                  this.dateNow = new Date("01/01/1970");
                 }else{
                   this.router.navigate(["/actividades/form"]);
                 }
@@ -66,6 +68,8 @@ export class ActividadFormComponent implements OnInit {
     } else {
       this.titulo = "Nueva actividad";
       this.marked = false;
+      this.dateNow = new Date();
+      this.hoy = this.formateoFecha(this.dateNow);
     }
   }
 

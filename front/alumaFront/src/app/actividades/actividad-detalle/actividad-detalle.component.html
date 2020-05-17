@@ -71,7 +71,7 @@
 </section>
 
 <div class="d-flex justify-content-center pt-3" id="botones">
-    <a routerLink="form/{{ idActividad }}"  class="btn btn-w btn-white btn-animation-1 mr-5 text-black">Editar</a>
+    <a [routerLink]="['/actividades/form', idActividad ]"  class="btn btn-w btn-white btn-animation-1 mr-5 text-black">Editar</a>
     <button type="cancelar" class="btn btn-red btn-r btn-animation-2 btn-start-order" id="cancelar" (click)='borrarActividad()'>Borrar</button>
 </div>
     
