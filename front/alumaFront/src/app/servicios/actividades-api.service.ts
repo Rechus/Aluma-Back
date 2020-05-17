@@ -17,6 +17,7 @@ const url_base_externas = "http://localhost:8080/api/externas";
   providedIn: 'root'
 })
 export class ActividadesApiService extends ActividadesService {
+  
 
   constructor(private http: HttpClient) { 
     super();
@@ -143,4 +144,13 @@ export class ActividadesApiService extends ActividadesService {
     let href = actividad['_links'].self.href;
     return href.slice(href.lastIndexOf('/')+1);
   }
+
+  borrarActividadLocal(id: any): Observable<Object> {
+    return this.http.delete(`${url_base_locales}/${id}`);
+  }
+
+  borrarActividadExterna(id: any): Observable<Object> {
+    return this.http.delete(`${url_base_externas}/${id}`);
+  }
+
 }

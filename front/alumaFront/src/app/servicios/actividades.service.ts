@@ -37,6 +37,8 @@ export abstract class ActividadesService{
     abstract getAcompanantesPorActividadExterna(id: any);
 
     abstract getIdActividad(actividad);
+    abstract borrarActividadLocal(id: any): Observable<Object>;
+    abstract borrarActividadExterna(id: any): Observable<Object>;
 
    
 

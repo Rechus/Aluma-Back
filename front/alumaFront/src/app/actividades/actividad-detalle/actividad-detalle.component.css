@@ -86,7 +86,7 @@ i {
     animation:comeFromBottom 1s ease-out .8s;
   }
   
-  .btn::after{
+  .btn-w::after{
     content:"";
     text-decoration: none;
     text-transform:uppercase;
@@ -99,6 +99,13 @@ i {
     display:inline-block;
     z-index:-1;
     transition: all .5s;
+  }
+  
+  .btn-red:hover{
+    box-shadow:0px 10px 10px rgba(0,0,0,0.2);
+    transform : translateY(-3px);
+    background-color: rgba(255, 0, 0, 0.2);
+    
   }
   
   .btn-white::after {
@@ -114,6 +121,12 @@ i {
       opacity: 0;
       background: green;
   }
+
+  .btn-animation-2:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+    background: green;
+}
   
   @keyframes comeFromBottom{
     0%{

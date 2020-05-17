@@ -13,7 +13,7 @@ export class ActividadesListaComponent implements OnInit {
   actividadesListaLocales: Local[] = [];
   actividadesListaExternas: Externa[] = [];
 
-  constructor(private actividadesService: ActividadesService) { 
+  constructor(public actividadesService: ActividadesService) { 
   }
 
   ngOnInit(): void {

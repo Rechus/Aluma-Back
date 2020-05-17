@@ -4,6 +4,7 @@ import { ActividadesService } from 'src/app/servicios/actividades.service';
 import { Component, OnInit } from '@angular/core';
 import { Externa } from 'src/app/modelo/Externa';
 import { Local } from 'src/app/modelo/Local';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-actividad-detalle',
@@ -12,7 +13,7 @@ import { Local } from 'src/app/modelo/Local';
 })
 export class ActividadDetalleComponent implements OnInit {
 
-  idActividad = 1;
+  idActividad;
   detalle;
   local: Local;
   externa: Externa;
@@ -20,9 +21,12 @@ export class ActividadDetalleComponent implements OnInit {
   numeroParticipantes: number;
   numeroReservas: number;
 
-  constructor(private actividadesService:  ActividadesService) { }
+  constructor(private actividadesService:  ActividadesService,
+    private ruta: ActivatedRoute,
+    private  router: Router) { }
 
   ngOnInit(): void {
+    this.idActividad = this.ruta.snapshot.paramMap.get('id');
     this.numeroParticipantes = 0;
     this.listaParticipantes = null;
     this.detalle = {
@@ -121,7 +125,8 @@ export class ActividadDetalleComponent implements OnInit {
                   }
                 )
               }else{
-              // this.router.navigate(["/actividades/form"]);
+              alert("No se ha encontrado ninguna actividad");
+              this.router.navigate(["/actividades/form"]);
               }
             }
           )
@@ -146,6 +151,21 @@ export class ActividadDetalleComponent implements OnInit {
     this.detalle.precio = this.externa.precio;
     this.detalle.reservaPlazasEmpleados = this.externa.reservaPlazasEmpleados;
     this.detalle.destino = this.externa.destino;
+  }
+
+  borrarActividad(){
+    if (confirm("¿Desea borrar la actividad?")){
+      if(this.detalle.destino == "Actividad Local"){
+        this.actividadesService.borrarActividadLocal(this.idActividad).subscribe(
+          () => this.router.navigate(["/actividades/listado"])
+        )
+      }else{
+        this.actividadesService.borrarActividadExterna(this.idActividad).subscribe(
+          () => this.router.navigate(["/actividades/listado"])
+        )
+      }
+    }
+
   }
 
 }

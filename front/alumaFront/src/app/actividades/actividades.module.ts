@@ -25,7 +25,7 @@ import { ActividadFormComponent } from './actividad-form/actividad-form.componen
     }
     ])
   ],
-  exports: [ActividadesListaComponent, ActividadDetalleComponent]
+  exports: [ActividadesListaComponent, ActividadDetalleComponent, ActividadesListaComponent]
 })
 export class ActividadesModule { }
  
