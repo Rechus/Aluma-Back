@@ -21,6 +21,7 @@ export class ActividadDetalleComponent implements OnInit {
   numeroParticipantes: number;
   numeroReservas: number;
 
+
   constructor(private actividadesService:  ActividadesService,
     private ruta: ActivatedRoute,
     private  router: Router) { }

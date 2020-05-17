@@ -39,6 +39,7 @@ export class ActividadParticipantesComponent implements OnInit {
           this.actividadesService.getSociosPorActividadLocal(this.idActividad).subscribe(
             (respuesta2) => {
               if(respuesta2){
+           
               this.socios = respuesta2;
               }
             }
@@ -60,6 +61,7 @@ export class ActividadParticipantesComponent implements OnInit {
           this.actividadesService.getAcompanantesPorActividadLocal(this.idActividad).subscribe(
             (respuesta2) => {
               if(respuesta2){
+              console.log(respuesta2);
               this.acompanantes = respuesta2;
               }
             }

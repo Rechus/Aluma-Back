@@ -1,87 +1,75 @@
 <h2 class = "text-center mt-3"> LISTADO DE PARTICIPANTES  </h2>
 
 <section>
-    <div class= "flex-fill text-left pt-3">
+    <div class= "flex-fill text-center pt-3">
         <h2>
             <i class="fas fa-tag" id="nombreIco"></i>
             <span> {{ nombre }} </span>
         </h2>
     </div>
-    <div class="d-flex">
-
-        <div class="flex-row" id="cabeceraJunta">
-
+        <div id="cabeceraJunta">
+            <h4>
+                <i class="fas fa-user-tie pr-3"></i>
+                <span>Miembros de la Junta </span>
+            </h4>   
         </div>
-        <div class="flex-row" id="listadoJunta">
-            <div class="flex-column" id="puesto">
-
-            </div>
-            <div class="flex-column" id="nombreJ">
-
-            </div>
-            <div class="flex-column" id="apellidoJ">
-
-            </div>
-
+        <div class="d-flex" id="listadoJunta"> 
+                <div *ngIf="miembros.length > 0" >
+                    <div *ngFor="let miembro of miembros" class="pr-3">
+                         {{ miembro.puesto }}
+                         <span class="pr-3 pl-3">{{ miembro.nombre }} </span> 
+                         <span class="pr-3">{{ miembro.primerApello }} </span>
+                    </div>
+                </div>
+                <div *ngIf="miembros.length == 0" > No existen participantes </div>                  
         </div>
-
+        <div class="pt-3" id="cabeceraSocios">
+            <h4>
+                <i class="far fa-id-card pr-3"></i>
+                <span>Socios</span>
+            </h4>   
+        </div>
+        <div class="d-flex" id="listadoSocios"> 
+                <div *ngIf="socios.length > 0" >
+                    <div *ngFor="let socio of socios" class="pr-3">
+                         {{ socio.numeroSocio }}
+                         <span class="pr-3 pl-3">{{ socio.nombre }} </span> 
+                         <span class="pr-3">{{ socio.primerApello }} </span>
+                    </div>
+                </div> 
+                <div *ngIf="socios.length == 0" > No existen participantes </div>                 
+        </div>
+        <div class="pt-3" id="cabeceraSocios">
+            <h4>
+                <i class="fas fa-user-friends pr-3"></i>
+                <span>Acompañantes</span>
+            </h4>   
+        </div>
+        <div class="d-flex" id="listadoAcom"> 
+                <div *ngIf="acompanantes.length > 0" >
+                    <div *ngFor="let acompanante of acompanantes">
+                         <span class="pr-3">{{ acompanante.nombre }} </span> 
+                         <span class="pr-3">{{ acompanante.primerApello }} </span>
+                    </div>
+                </div>  
+                <div *ngIf="acompanantes.length == 0" > No existen participantes </div>                
+        </div>
+        <div class="pt-3" id="cabeceraSocios">
+            <h4>
+                <i class="far fa-user pr-3"></i>
+                <span>Sin relación con la asociación</span>
+            </h4>   
+        </div>
+        <div class="d-flex" id="listadoAcom"> 
+            <div *ngIf="personas.length > 0" >
+                <div *ngFor="let persona of personas">
+                     <span class="pr-3">{{ persona.nombre }} </span> 
+                     <span class="pr-3">{{ persona.primerApello }} </span>
+                </div>
+            </div>
+            <div *ngIf="personas.length == 0" > No existen participantes </div>                   
     </div>
-    <div class="d-flex">
-
-        <div class="flex-row" id="cabeceraSocios">
-
-        </div>
-        <div class="flex-row" id="listadoSocios">
-            <div class="flex-column" id="numeroS">
-
-            </div>
-            <div class="flex-column" id="nombreS">
-
-            </div>
-            <div class="flex-column" id="apellidoS">
-
-            </div>
-
-        </div>
+    <div class="d-flex justify-content-center pt-3">
+    <a [routerLink]="['/actividades', idActividad ]"  class="btn btn-w btn-white btn-animation-1 mr-5 text-black">volver</a>
     </div>
-
-    <div class="d-flex">
-
-        <div class="flex-row" id="cabeceraAcom">
-
-        </div>
-        <div class="flex-row" id="listadoAcom">
-            <div class="flex-column" id="numeroA">
-
-            </div>
-            <div class="flex-column" id="nombreA">
-
-            </div>
-            <div class="flex-column" id="apellidoA">
-
-            </div>
-
-        </div>
-    </div>
-    <div class="d-flex">
-
-        <div class="flex-row" id="cabeceraPer">
-
-        </div>
-        <div class="flex-row" id="listadoPer">
-            <div class="flex-column" id="numeroP">
-
-            </div>
-            <div class="flex-column" id="nombreP">
-
-            </div>
-            <div class="flex-column" id="apellidoP">
-
-            </div>
-
-        </div>
-    </div>
-
-
-    
 </section>
