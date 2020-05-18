@@ -1,0 +1,39 @@
+<h2 class = "text-center mt-3"> LISTADO DE RESERVAS  </h2>
+<section>
+    <div class= "flex-fill text-left pt-3">
+        <h2>
+            <i class="fas fa-tag" id="nombreIco"></i>
+            <span> {{ nombre }} </span>
+        </h2>
+    </div>
+    <div  class="pt-3" id="cabecera">
+        <h4>
+            <i class="fas fa-money-check pr-3"></i>
+            <span class="pr-5">Nº Reserva </span>
+            <span class="pr-5">Fecha</span>
+            <span class="pr-3">Confirmado </span>
+        </h4>   
+    </div>
+    <div class="d-flex" id="listadoReservas"> 
+        <div *ngIf="reservas.length > 0" >
+                    <div *ngFor="let reserva of reservas; index as i" class="pr-3">
+                        <div *ngIf="reserva.confirmado == true" id="confirmado">
+                        <span id="reserva"> {{i+1}} </span>
+                        <span  id="fecha">{{ reserva.fecha | date:'dd/MM/yyyy' }} </span> 
+                        <span  id="check"><i class="far fa-check-circle"></i></span>
+                        </div>
+                        <div *ngIf="reserva.confirmado == false" id="Noconfirmado">
+                            <span id="reserva"> {{i+1}} </span>
+                            <span  id="fecha">{{ reserva.fecha | date:'dd/MM/yyyy' }} </span> 
+                            <span  id="check"><i class="fas fa-times"></i></span>
+                            </div>
+                    </div>
+                
+        </div>
+        <div *ngIf="reservas.length == 0" > No existen reservas </div>                  
+</div>
+    <div class="d-flex justify-content-center pt-3">
+    <a [routerLink]="['/actividades', idActividad ]"  class="btn btn-w btn-white btn-animation-1 mr-5 text-black">volver</a>
+    </div>
+
+</section>
