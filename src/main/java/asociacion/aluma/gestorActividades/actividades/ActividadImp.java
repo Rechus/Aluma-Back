@@ -38,7 +38,7 @@ public abstract class ActividadImp implements Actividad {
 	private int numeroPlazas;
 	private double precio;
 	@ManyToMany
-	@JoinTable(name = "ACTIV_PART", joinColumns = @JoinColumn(name = "ACT_ID", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "PART_DNI", referencedColumnName = "PERS_DNI"))
+	@JoinTable(name = "ACTIV_PART", joinColumns = @JoinColumn(name = "ID", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "DNI", referencedColumnName = "PERS_DNI"))
 	private Collection<Persona> listaParticipantes;
 	@OneToMany(targetEntity = Reserva.class, cascade = CascadeType.ALL, mappedBy = "actividad")
 	private Collection<Reserva> listaReservas;
