@@ -8,10 +8,10 @@ import { Actividades } from '../modelo/Actividades';
 import { Local } from '../modelo/Local';
 import { Externa } from '../modelo/Externa';
 
-const url_base = "http://localhost:8080/api";
-const url_base_actividades = "http://localhost:8080/api/actividades";
-const url_base_locales = "http://localhost:8080/api/locales";
-const url_base_externas = "http://localhost:8080/api/externas";
+const url_base = "https://aluma-gesac.herokuapp.com/api";
+const url_base_actividades = "https://aluma-gesac.herokuapp.com/actividades";
+const url_base_locales = "https://aluma-gesac.herokuapp.com/api/locales";
+const url_base_externas = "https://aluma-gesac.herokuapp.com/api/externas";
 
 @Injectable({
   providedIn: 'root'
