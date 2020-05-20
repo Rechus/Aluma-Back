@@ -9,7 +9,7 @@ import { Local } from '../modelo/Local';
 import { Externa } from '../modelo/Externa';
 
 const url_base = "https://aluma-gesac.herokuapp.com/api";
-const url_base_actividades = "https://aluma-gesac.herokuapp.com/actividades";
+const url_base_actividades = "https://aluma-gesac.herokuapp.com/api/actividades";
 const url_base_locales = "https://aluma-gesac.herokuapp.com/api/locales";
 const url_base_externas = "https://aluma-gesac.herokuapp.com/api/externas";
 
