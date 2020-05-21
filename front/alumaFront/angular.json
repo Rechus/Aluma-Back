@@ -27,7 +27,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scrits": []
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -119,10 +119,6 @@
               "devServerTarget": "alumaFront:serve:production"
             }
           }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {}
         }
       }
     }
