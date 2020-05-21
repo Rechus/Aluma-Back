@@ -7,7 +7,9 @@ import { LateralComponent } from './lateral/lateral.component';
 import { HomeComponent } from './home/home.component';
 import { PieComponent } from './pie/pie.component';
 import { ServiciosModule} from './../servicios/servicios.module';
-
+import { MatIconModule} from '@angular/material/icon';
+import { MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -16,6 +18,9 @@ import { ServiciosModule} from './../servicios/servicios.module';
   imports: [
     CommonModule,
     ServiciosModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     FormsModule,
     RouterModule
   ],
@@ -24,6 +29,9 @@ import { ServiciosModule} from './../servicios/servicios.module';
     LateralComponent, 
     HomeComponent, 
     PieComponent,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     FormsModule
   ]
 })
