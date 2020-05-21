@@ -27,7 +27,22 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scrits": [
+
+              {
+                "build:prod": "ng build --prod",
+                "build:pub": "ng build --prod --output-path docs --base-href https://github.com/Rechus/Rechus.github.io/",
+                "e2e": "ng e2e",
+                "http-server": "http-server ./dist/angular-board/ -c-1 -p4271 -a localhost - o",
+                "lint": "ng lint",
+                "ng": "ng",
+                "pub": "npm run build:pub && npm run push", 
+                "push": "git add * && git commit -m 'pub' && git push",
+                "start:prod": "npm run build:prod && npm run http-server",
+                "start": "ng serve --aot -o --port 4200",
+                "test": "ng test"
+                }
+            ]
           },
           "configurations": {
             "production": {
