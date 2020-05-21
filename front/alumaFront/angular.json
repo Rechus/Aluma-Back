@@ -27,12 +27,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scrits": [
-
-              {
-                "build:pub": "ng build --prod --output-path docs --base-href https://github.com/Rechus/Rechus.github.io/",
-              }
-            ]
+            "scrits": []
           },
           "configurations": {
             "production": {
@@ -124,6 +119,10 @@
               "devServerTarget": "alumaFront:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
