@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "https://rechus.github.io"})
 @RepositoryRestResource(path = "externas", itemResourceRel = "externa", collectionResourceRel = "externas")
 public interface ActividadExternaDAO extends JpaRepository<ActividadExterna, String> {
 	

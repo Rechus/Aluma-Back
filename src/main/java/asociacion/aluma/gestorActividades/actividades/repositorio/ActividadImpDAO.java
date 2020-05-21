@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import asociacion.aluma.gestorActividades.actividades.ActividadImp;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "https://rechus.github.io"} )
 @RepositoryRestResource(path = "actividades", itemResourceRel = "actividad", collectionResourceRel = "actividades")
 public interface ActividadImpDAO extends JpaRepository<ActividadImp, String> {
 
