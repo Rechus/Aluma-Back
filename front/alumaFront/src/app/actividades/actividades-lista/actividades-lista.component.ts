@@ -18,10 +18,22 @@ export class ActividadesListaComponent implements OnInit {
 
   ngOnInit(): void {
     this.actividadesService.getActividadesLocales().subscribe(
-      respuesta => (this.actividadesListaLocales = respuesta)
+      respuesta =>{
+        if(respuesta){
+          this.actividadesListaLocales = respuesta;
+        }else{
+          this.actividadesListaLocales = [];
+        }
+      } 
     )
     this.actividadesService.getActividadesExternas().subscribe(
-      respuesta => (this.actividadesListaExternas = respuesta)
+      respuesta =>{
+        if(respuesta){
+          this.actividadesListaExternas = respuesta;
+        }else{
+          this.actividadesListaExternas = [];
+        }
+      }
     )
   }
 
