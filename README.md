@@ -1,13 +1,20 @@
 # ASOCIACIÓN ALUMA
 
-1er Sprint intrucciones: 
+* [Acceda a la wiki del proyecto](https://git.institutomilitar.com/Rechus/asociacion-aluma/wikis/home)
+* [Acceda a la documentación específica del front](https://pleyadesoft.github.io/)
+ 
 
-* [URL API](http://localhost:8080/api/)
 
-* Datos de prueba:  Se han introducido datos de prueba en el main.
 
-* Instrucciones: 
-1. Arrancar la BD H2.
-2. Ejecutar bootrun 
-3. Acceder con postman a la URL indicada más arriba. 
-4. Desde Postman realizar todas las operaciones CRUD que se estímen oportunas. 
+2do Sprint intrucciones: 
+
+* Puede consultar el código específico del sprint en la carpeta front.
+
+* [Acceda aquí a la aplicación](https://rechus.github.io/)
+
+* Datos de prueba:  Se han introducido datos de prueba en la BD, por favor no borre los ya introducidos.
+
+* Todos los enlaces están desabilitados, con la excepción de actividades.
+
+* Desde actividades, saldrá el listado de actividades (puede tardar unos segundos en el primer uso). Desde allí puede realizar todas las operaciones CRUD que estime oportunas.
+
