@@ -45,10 +45,18 @@ export class ActividadesListaComponent implements OnInit {
   filtrar(filtro?){
     if (!filtro || filtro.trim().lenght == 0 ){
       this.actividadesService.getActividadesLocales().subscribe(
-        respuesta => this.actividadesListaLocales = respuesta
+        respuesta =>{
+          if(respuesta){
+            this.actividadesListaLocales = respuesta;
+          }
+        } 
       )
       this.actividadesService.getActividadesExternas().subscribe(
-        respuesta => this.actividadesListaExternas = respuesta
+        respuesta =>{
+          if(respuesta){
+            this.actividadesListaExternas = respuesta;
+          }
+        } 
       )
     }else{
       this.actividadesService.getActividadesConNombreLocal(filtro).subscribe(

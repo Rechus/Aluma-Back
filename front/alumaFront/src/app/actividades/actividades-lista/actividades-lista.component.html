@@ -1,6 +1,6 @@
 
 
-<div class="d-flex">
+<div id="contenedor"class="d-flex">
   
     <div class="flex-fill">
         <div class="d-block form-group" id="busqueda">
@@ -11,7 +11,7 @@
             No se han encontrado actividades con el valor '{{ buscar.value }}'
         </div>
       
-        <div *ngIf="actividadesListaLocales.length && actividadesListaExternas.length > 0" class="mt-5" id="mostrando">
+        <div *ngIf="actividadesListaLocales.length || actividadesListaExternas.length > 0" class="mt-2" id="mostrando">
             Mostrando 1 - {{ actividadesListaLocales.length + actividadesListaExternas.length  }} de {{ actividadesListaLocales.length + actividadesListaExternas.length  }} actividades
             <i class="fas fa-chevron-left"></i>
             <i class="fas fa-chevron-right"></i>
