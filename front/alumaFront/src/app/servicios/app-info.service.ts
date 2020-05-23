@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AppInfoService {
 
-  private  version = "0";
+  private  version = "0.1";
 
   constructor() { }
   getVersion(){
