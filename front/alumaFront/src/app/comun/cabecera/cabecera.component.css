@@ -68,4 +68,12 @@
         height: 15%;
     }
 
+    #alumaIcon{
+    display: none;
+    }
+
+    #sesion{
+       display: none;
+    }
+
 }
