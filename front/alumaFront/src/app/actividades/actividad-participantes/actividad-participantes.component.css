@@ -75,3 +75,24 @@ section{
   }
 }
 
+@media (max-width: 700px){
+    h2{
+      font-size: medium;
+    }
+
+    section{
+      padding-left: 10%;
+      color: black;
+  }
+  h4{
+    font-size: medium;
+  }
+  span{
+    font-size: small;
+  }
+#no{
+  font-size: small;
+}
+
+}
+

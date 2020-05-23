@@ -1,7 +1,7 @@
 <h2 class = "text-center mt-3"> LISTADO DE PARTICIPANTES  </h2>
 
 <section>
-    <div class= "flex-fill text-center pt-3">
+    <div class= "flex-fill text-md-center text-left pt-3">
         <h2>
             <i class="fas fa-tag" id="nombreIco"></i>
             <span> {{ nombre }} </span>
@@ -21,7 +21,7 @@
                          <span class="pr-3">{{ miembro.primerApello }} </span>
                     </div>
                 </div>
-                <div *ngIf="miembros.length == 0" > No existen participantes </div>                  
+                <div *ngIf="miembros.length == 0" id="no" > No existen participantes </div>                  
         </div>
         <div class="pt-3" id="cabeceraSocios">
             <h4>
@@ -37,7 +37,7 @@
                          <span class="pr-3">{{ socio.primerApello }} </span>
                     </div>
                 </div> 
-                <div *ngIf="socios.length == 0" > No existen participantes </div>                 
+                <div *ngIf="socios.length == 0" id="no"> No existen participantes </div>                 
         </div>
         <div class="pt-3" id="cabeceraSocios">
             <h4>
@@ -52,7 +52,7 @@
                          <span class="pr-3">{{ acompanante.primerApello }} </span>
                     </div>
                 </div>  
-                <div *ngIf="acompanantes.length == 0" > No existen participantes </div>                
+                <div *ngIf="acompanantes.length == 0" id="no" > No existen participantes </div>                
         </div>
         <div class="pt-3" id="cabeceraSocios">
             <h4>
@@ -67,7 +67,7 @@
                      <span class="pr-3">{{ persona.primerApello }} </span>
                 </div>
             </div>
-            <div *ngIf="personas.length == 0" > No existen participantes </div>                   
+            <div *ngIf="personas.length == 0" id="no" > No existen participantes </div>                   
     </div>
     <div class="d-flex justify-content-center pt-3">
     <a [routerLink]="['/actividades', idActividad ]"  class="btn btn-w btn-white btn-animation-1 mr-5 text-black">volver</a>

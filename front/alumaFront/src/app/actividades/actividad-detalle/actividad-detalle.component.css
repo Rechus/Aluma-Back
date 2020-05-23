@@ -22,11 +22,6 @@ i {
     transform: scale(1.4);
 }
 
-#euro{
-    transform: scale(0.8);
-    color: black;
-}
-
 #listadoIco {
     transform: scale(1.4);
 }
@@ -137,5 +132,57 @@ i {
       opacity:1;
       transform:translateY(0);
     }
+  }
+
+  @media (max-width: 700px){
+  
+    h2{
+      font-size: medium;
+    }
+
+    #precio{
+      vertical-align: middle;
+      padding-top: -5%;
+    }
+
+    section{
+      padding-left: 5%;
+    }
+
+    span{
+      font-size: small;
+    }
+
+    #calendarioIco {
+      transform: scale(0.8);
+      padding-right: 2%;
+  }
+  
+  #nombreIco {
+      transform: scale(1.2);
+      padding-right: 1%;
+  }
+  
+  #dinero {
+      transform: scale(0.8);
+  }
+  
+  
+  #listadoIco {
+      transform: scale(0.8);
+  }
+  
+  #mapa {
+      transform: scale(0.7);
+  }
+  
+  #verParticipantes{
+    padding-left: 5%;
+  }
+
+  #plazas{
+    padding-left: 0;
+  }
+  
   }
 

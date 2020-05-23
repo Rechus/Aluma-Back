@@ -55,7 +55,7 @@ h5{
     #busqueda{
         padding-left: 8%;
         padding-top: 3%;
-        padding-right: 10%;
+        padding-right: 18%;
     }
 
     #mostrando{
@@ -87,7 +87,11 @@ h5{
         padding-top: 5%;
         padding-left: 3%;
     }
-    
 
+    #error{
+        padding-left: 8%;
+        padding-right: 10%;
+        font-size: smaller;
+    }
 }
 
