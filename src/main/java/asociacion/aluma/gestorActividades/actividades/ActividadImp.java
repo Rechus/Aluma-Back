@@ -16,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.InheritanceType;
 
 import asociacion.aluma.gestorActividades.gestorReservas.Reserva;

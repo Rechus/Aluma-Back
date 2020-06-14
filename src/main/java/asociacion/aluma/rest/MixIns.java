@@ -1,5 +1,19 @@
 package asociacion.aluma.rest;
 
+import java.time.Instant;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 public class MixIns {
-// Clase creada para agrupar los mixins cuando sea necesario		
+
+	@JsonIgnoreProperties(value = {"numeroPlazasNoEmp"})
+	public abstract class ActividadImp {}
+	
+	@JsonPropertyOrder({ "fecha", "nombre", "precio", "numeroPlazas", "reservaPlazasEmpleados" })
+	public  class ActividadLocal {}
+	
+	@JsonPropertyOrder({ "fecha", "nombre", "destino", "precio", "numeroPlazas", "reservaPlazasEmpleados" })
+	public  class ActividadExterna {}
 }
