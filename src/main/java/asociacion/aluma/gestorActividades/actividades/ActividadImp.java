@@ -7,6 +7,7 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,6 +27,7 @@ import asociacion.aluma.gestorMiembros.personas.Empleado;
 import asociacion.aluma.gestorMiembros.personas.Persona;
 
 @Entity
+@EntityListeners(ActividadesListener.class)
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "ACTIVIDADES")
 
@@ -57,6 +59,10 @@ public abstract class ActividadImp implements Actividad {
 
 	public Instant getFecha() {
 		return fecha;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public void setDate(Instant fecha) {

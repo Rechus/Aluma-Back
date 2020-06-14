@@ -3,6 +3,7 @@ package asociacion.aluma;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -18,6 +19,7 @@ import asociacion.aluma.rest.MixIns;
 
 @Configuration
 @PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties" })
+@ComponentScan("asociacion.aluma.gestorActividades.actividades")
 public class ConfiguracionPorJava {
 
 
