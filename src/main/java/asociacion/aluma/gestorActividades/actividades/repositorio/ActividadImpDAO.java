@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 import asociacion.aluma.gestorActividades.actividades.ActividadImp;
+import asociacion.aluma.gestorMiembros.personas.Persona;
 
 
 @CrossOrigin(origins = {"http://localhost:4200" , "https://rechus.github.io"} )

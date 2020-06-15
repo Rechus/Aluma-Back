@@ -12,6 +12,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+
+import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
+import asociacion.aluma.gestorActividades.gestorReservas.repositorio.ReservaDAO;
+import asociacion.aluma.rest.ConfiguracionRest;
+
+
+
 //import asociacion.aluma.gestorActividades.actividades.ActividadExterna;
 //import asociacion.aluma.gestorActividades.actividades.ActividadLocal;
 //import asociacion.aluma.gestorActividades.actividades.repositorio.ActividadExternaDAO;
@@ -29,14 +36,21 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource({ "classpath:config/jpa-config.xml" })
-@Import(ConfiguracionPorJava.class)
+@Import({ConfiguracionPorJava.class, ConfiguracionRest.class})
 public class App {
 
 	private static final Logger log = LoggerFactory.getLogger(App.class);
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
+		
 
+		
+//		ReservaDAO reservaDAO = context.getBean(ReservaDAO.class);
+//		
+//		reservaDAO.getReservasPorPersona("dni 1").stream().map(Reserva::toString).forEach(log::info);
+		
+		
 		// Datos de ejemplo para introducir en la base de datos
 //		Transporte autobus = new Autobus("Autobus 50 plazas", 50);
 //		ActividadLocal actividad = new ActividadLocal("Visita A Granada", Instant.now(), 10, 2, 1);

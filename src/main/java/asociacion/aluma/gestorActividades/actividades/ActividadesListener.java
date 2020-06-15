@@ -17,9 +17,14 @@ public class ActividadesListener {
 		if(actividad.getReservaPlazasEmpleados() >= actividad.getNumeroPlazas()*0.5) {
 			actividad.setReservaPlazasEmpleados(actividad.getNumeroPlazas() / 2);
 		}
-		// Control de nombres vacíos
+		// Control de nombres vacios
 		if(actividad.getNombre() == ""){
 			actividad.setNombre("Actividad sin nombre creada el: " + Instant.now());
+		}
+		
+		// Control de fechas vacias
+		if(actividad.getFecha() == null) {
+			actividad.setDate(Instant.now());
 		}
 	}	
 }
