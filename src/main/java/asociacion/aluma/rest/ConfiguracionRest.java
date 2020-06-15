@@ -33,7 +33,8 @@ import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
  * Proporciona las siguientes funcionalidades:
  * <ol>
  * <li>{@link #addSearchLinks(RepositoryRestConfiguration)}: enlaza cada
- * {@code /recursos/search} automaticamente con los metodos de los controladores registrados.</li>
+ * {@code /recursos/search} automaticamente con los metodos de los controladores
+ * registrados.</li>
  * <li>{@link #corsFilter()}: permite cualquier solicitud Cross-Origin.</li>
  * </ol>
  * 
@@ -44,68 +45,75 @@ import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
 @Configuration
 public class ConfiguracionRest {
 
-    /**Enlaza automaticamente los links de los controladores registrados siguiendo las 
-     * <a href="https://www.hijosdelspectrum.com/2020/05/codigo-util-clase-configuracionrest.html">instrucciones </a>
-     * @param config {@link RepositoryRestConfiguration} para recuperar al {@code basePath}
-     * @return el bean del tipo {@code RepresentationModelProcessor<RepositorySearchesResource>}
-     */
-    @Bean
-    RepresentationModelProcessor<RepositorySearchesResource> addSearchLinks(RepositoryRestConfiguration config) {
-        Map<Class<?>, Class<?>> controllersRegistrados = new HashMap<>();
-        
-        controllersRegistrados.put(Reserva.class, ReservaController.class);
+	/**
+	 * Enlaza automaticamente los links de los controladores registrados siguiendo
+	 * las <a href=
+	 * "https://www.hijosdelspectrum.com/2020/05/codigo-util-clase-configuracionrest.html">instrucciones
+	 * </a>
+	 * 
+	 * @param config {@link RepositoryRestConfiguration} para recuperar al
+	 *               {@code basePath}
+	 * @return el bean del tipo
+	 *         {@code RepresentationModelProcessor<RepositorySearchesResource>}
+	 */
+	@Bean
+	RepresentationModelProcessor<RepositorySearchesResource> addSearchLinks(RepositoryRestConfiguration config) {
+		Map<Class<?>, Class<?>> controllersRegistrados = new HashMap<>();
 
-        return new RepresentationModelProcessor<RepositorySearchesResource>() {
+		controllersRegistrados.put(Reserva.class, ReservaController.class);
 
-            @Override
-            public RepositorySearchesResource process(RepositorySearchesResource searchResource) {
-                if (controllersRegistrados.containsKey(searchResource.getDomainType())) {
-                    Method[] metodos = controllersRegistrados.get(searchResource.getDomainType()).getDeclaredMethods();
-                    for (Method m : metodos) {
-                        if (!m.isAnnotationPresent(ResponseBody.class)) continue;
-                        try {
-                            Object[] pathVars = Stream.of(m.getParameters())
-                                    .filter(p -> p.isAnnotationPresent(PathVariable.class))
-                                    .map(p -> "(" + p.getName() + ")")
-                                    .collect(Collectors.toList()).toArray();
-                            URI uri = linkTo(m, pathVars).toUri();
-                            String path = new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
-                                    config.getBasePath() + uri.getPath(), uri.getQuery(), uri.getFragment())
-                                    .toString().replace("(", "{").replace(")", "}");
-                            String requestParams = Stream.of(m.getParameters())
-                                    .filter(p -> p.isAnnotationPresent(RequestParam.class))
-                                    .map(Parameter::getName)
-                                    .collect(Collectors.joining(","));
-                            searchResource.add(new Link(path + "{?" + requestParams + "}", m.getName()));
-                        } catch (URISyntaxException e) { e.printStackTrace(); }
-                    }
-                }
+		return new RepresentationModelProcessor<RepositorySearchesResource>() {
 
-                return searchResource;
-            }
+			@Override
+			public RepositorySearchesResource process(RepositorySearchesResource searchResource) {
+				if (controllersRegistrados.containsKey(searchResource.getDomainType())) {
+					Method[] metodos = controllersRegistrados.get(searchResource.getDomainType()).getDeclaredMethods();
+					for (Method m : metodos) {
+						if (!m.isAnnotationPresent(ResponseBody.class))
+							continue;
+						try {
+							Object[] pathVars = Stream.of(m.getParameters())
+									.filter(p -> p.isAnnotationPresent(PathVariable.class))
+									.map(p -> "(" + p.getName() + ")").collect(Collectors.toList()).toArray();
+							URI uri = linkTo(m, pathVars).toUri();
+							String path = new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
+									config.getBasePath() + uri.getPath(), uri.getQuery(), uri.getFragment()).toString()
+											.replace("(", "{").replace(")", "}");
+							String requestParams = Stream.of(m.getParameters())
+									.filter(p -> p.isAnnotationPresent(RequestParam.class)).map(Parameter::getName)
+									.collect(Collectors.joining(","));
+							searchResource.add(new Link(path + "{?" + requestParams + "}", m.getName()));
+						} catch (URISyntaxException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 
-        };
-    }
+				return searchResource;
+			}
 
-    /**
-     * Ver tambien <a href=
-     * "https://docs.spring.io/spring-data/rest/docs/current/reference/html/#customizing-sdr.configuring-cors">
-     * Configuring CORS</a> para configuracion Data Rest adicional heredada con
-     * {@link org.springframework.web.bind.annotation.CrossOrigin}.
-     * 
-     * @return bean del tipo {@link CorsFilter} permitiendo cualquier solicitud
-     */
-    @Bean
-    CorsFilter corsFilter() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(Collections.singletonList("*"));
-        config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
-        source.registerCorsConfiguration("/**", config);
+		};
+	}
 
-        return new CorsFilter(source);
-    }
+	/**
+	 * Ver tambien <a href=
+	 * "https://docs.spring.io/spring-data/rest/docs/current/reference/html/#customizing-sdr.configuring-cors">
+	 * Configuring CORS</a> para configuracion Data Rest adicional heredada con
+	 * {@link org.springframework.web.bind.annotation.CrossOrigin}.
+	 * 
+	 * @return bean del tipo {@link CorsFilter} permitiendo cualquier solicitud
+	 */
+	@Bean
+	CorsFilter corsFilter() {
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		final CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+		config.setAllowedOrigins(Collections.singletonList("*"));
+		config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
+		config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
+		source.registerCorsConfiguration("/**", config);
+
+		return new CorsFilter(source);
+	}
 
 }

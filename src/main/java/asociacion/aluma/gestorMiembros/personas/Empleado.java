@@ -2,7 +2,6 @@ package asociacion.aluma.gestorMiembros.personas;
 
 import java.time.Instant;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

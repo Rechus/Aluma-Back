@@ -21,7 +21,7 @@ import asociacion.aluma.gestorMiembros.personas.repositorio.PersonaDAO;
 
 @Transactional(readOnly = true)
 public class ReservaDAOImpl implements ReservaDAOCustom<Reserva> {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(App.class);
 
 	@Autowired
@@ -46,5 +46,4 @@ public class ReservaDAOImpl implements ReservaDAOCustom<Reserva> {
 
 	}
 
-	
 }

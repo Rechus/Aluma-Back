@@ -19,8 +19,8 @@ public class ReservaController {
 	private ReservaDAO reservaDAO;
 
 	ReservaController(ReservaDAO reservaDAO) {
-	        this.reservaDAO = reservaDAO;
-	    }
+		this.reservaDAO = reservaDAO;
+	}
 
 	@GetMapping("/reservas/search/por-persona-dni")
 	@ResponseBody

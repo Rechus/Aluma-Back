@@ -13,8 +13,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 
-import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
-import asociacion.aluma.gestorActividades.gestorReservas.repositorio.ReservaDAO;
+//import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
+//import asociacion.aluma.gestorActividades.gestorReservas.repositorio.ReservaDAO;
 import asociacion.aluma.rest.ConfiguracionRest;
 
 
@@ -44,10 +44,7 @@ public class App {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
 		
-
-		
 //		ReservaDAO reservaDAO = context.getBean(ReservaDAO.class);
-//		
 //		reservaDAO.getReservasPorPersona("dni 1").stream().map(Reserva::toString).forEach(log::info);
 		
 		

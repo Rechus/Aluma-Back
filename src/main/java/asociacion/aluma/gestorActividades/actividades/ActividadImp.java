@@ -18,8 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.InheritanceType;
 
 import asociacion.aluma.gestorActividades.gestorReservas.Reserva;
@@ -52,7 +50,7 @@ public abstract class ActividadImp implements Actividad {
 	public String getId() {
 		return id;
 	}
-		
+
 	public String getNombre() {
 		return nombre;
 	}
